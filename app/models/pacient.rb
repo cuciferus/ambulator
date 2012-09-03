@@ -4,10 +4,14 @@ class Pacient < ActiveRecord::Base
 
   def self.search(search)
     search = nil if search ==""
-    if search.is_cnp?
-      @pacients = find(:all, :conditions => ['cnp = ?', search])
+    if search
+      if search.is_cnp?
+        @pacients = find(:all, :conditions => ['cnp = ?', search])
+      else
+        @pacients = find(:all, :conditions => ['nume like ?',"%#{search}"])
+      end
     else
-      @pacients = find(:all, :conditions => ['nume like ?',"%#{search}"])
+      @pacients = find(:all, :limit => 10)
     end
     @pacients
   end

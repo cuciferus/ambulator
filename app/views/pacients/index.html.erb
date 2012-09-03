@@ -6,9 +6,7 @@
     <%= submit_tag "Cauta Pacient", :name => nil %>
     </p>
 <% end %>
-<h3> buton de cautat pacienti</h3>
 <h3> tabel pacienti gasiti</h3><hr>
-<h3> adaugat evaluare la pacientu gasit</h3>
 
 
 <table>
@@ -26,8 +24,8 @@
 
 <% for pacient in @pacients %>
   <tr>
-    <td><%= pacient.nume %></td>
-    <td><%= pacient.prenume %></td>
+    <td><%= pacient.nume.downcase.capitalize %></td>
+    <td><%= pacient.prenume.downcase.capitalize %></td>
     <td><%= pacient.cnp %></td>
     <td><%= pacient.adresa %></td>
     <td><%= pacient.debut_diabet %></td>
@@ -35,6 +33,9 @@
     <td><%= link_to 'Show', pacient %></td>
     <td><%= link_to 'Edit', edit_pacient_path(pacient) %></td>
     <td><%= link_to 'Destroy', pacient, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= link_to 'Adauga Evaluare' %></td>
+    <td><%= link_to 'Vezi evaluari vechi' %> </td>
+    <td><%= link_to 'prescrie reteta' %></td>
   </tr>
 <% end %>
 </table>
