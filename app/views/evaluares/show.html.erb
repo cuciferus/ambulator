@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Data:</b>
+  <%= @evaluare.data %>
+</p>
+
+<p>
+  <b>Diagnostice:</b>
+  <%= @evaluare.diagnostice %>
+</p>
+
+<p>
+  <b>Recomandari:</b>
+  <%= @evaluare.recomandari %>
+</p>
+
+<p>
+  <b>Pacient:</b>
+  <%= @evaluare.pacient %>
+</p>
+
+
+<%= link_to 'Edit', edit_evaluare_path(@evaluare) %> |
+<%= link_to 'Back', evaluares_path %>

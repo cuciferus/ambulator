@@ -1,0 +1,44 @@
+<h1 align=center>Lista pacientilor</h1>
+<hr>
+<%= form_tag pacients_path, :method => 'get' do %>
+  <p> 
+    <%= text_field_tag :search, params[:search] %>
+    <%= submit_tag "Cauta Pacient", :name => nil %>
+    </p>
+<% end %>
+<h3> buton de cautat pacienti</h3>
+<h3> tabel pacienti gasiti</h3><hr>
+<h3> adaugat evaluare la pacientu gasit</h3>
+
+
+<table>
+  <tr>
+    <th>Nume</th>
+    <th>Prenume</th>
+    <th>Cnp</th>
+    <th>Adresa</th>
+    <th>Debut diabet</th>
+    <th>Focad</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @pacients.each do |pacient| %>
+  <tr>
+    <td><%= pacient.nume %></td>
+    <td><%= pacient.prenume %></td>
+    <td><%= pacient.cnp %></td>
+    <td><%= pacient.adresa %></td>
+    <td><%= pacient.debut_diabet %></td>
+    <td><%= pacient.focad %></td>
+    <td><%= link_to 'Show', pacient %></td>
+    <td><%= link_to 'Edit', edit_pacient_path(pacient) %></td>
+    <td><%= link_to 'Destroy', pacient, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Pacient', new_pacient_path %>

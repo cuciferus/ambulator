@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  nume: Cheta
+  prenume: Dan
+  cnp: 1200520133100
+  adresa: la paulescu pa stanga
+  debut_diabet: 2012-09-02
+  focad: 111
+
+two:
+  nume: MyString
+  prenume: MyString
+  cnp: MyString
+  adresa: MyString
+  debut_diabet: 2012-09-02
+  focad: MyString

@@ -1,0 +1,33 @@
+<%= form_for(@evaluare) do |f| %>
+  <% if @evaluare.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@evaluare.errors.count, "error") %> prohibited this evaluare from being saved:</h2>
+
+      <ul>
+      <% @evaluare.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :data %><br />
+    <%= f.date_select :data %>
+  </div>
+  <div class="field">
+    <%= f.label :diagnostice %><br />
+    <%= f.text_area :diagnostice %>
+  </div>
+  <div class="field">
+    <%= f.label :recomandari %><br />
+    <%= f.text_area :recomandari %>
+  </div>
+  <div class="field">
+    <%= f.label :pacient %><br />
+    <%= f.text_field :pacient %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
