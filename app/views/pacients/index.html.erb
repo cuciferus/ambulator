@@ -24,7 +24,7 @@
     <th></th>
   </tr>
 
-<% @pacients.each do |pacient| %>
+<% for pacient in @pacients %>
   <tr>
     <td><%= pacient.nume %></td>
     <td><%= pacient.prenume %></td>
