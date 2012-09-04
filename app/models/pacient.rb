@@ -1,6 +1,7 @@
 class Pacient < ActiveRecord::Base
   attr_accessible :adresa, :cnp, :debut_diabet, :focad, :nume, :prenume
   validates :cnp, :presence => true, :length =>{:is => 13, :wrong_length => "CNP are 13 cifre"}, :numericality => {:only_integer => true}
+  has_many :evaluares
 
   def self.search(search)
     search = nil if search ==""

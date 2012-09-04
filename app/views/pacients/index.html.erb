@@ -28,7 +28,7 @@
     <td><%= pacient.focad %></td>
     <td><%= link_to 'Edit', edit_pacient_path(pacient) %></td>
     <td><%= link_to 'Destroy', pacient, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-    <td><%= link_to 'Adauga Evaluare' %></td>
+    <td><%= link_to 'Adauga Evaluare', new_pacient_evaluare_path(pacient) %></td>
     <td><%= link_to 'Vezi evaluari vechi' %> </td>
     <td><%= link_to 'prescrie reteta' %></td>
   </tr>
