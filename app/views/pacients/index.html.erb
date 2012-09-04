@@ -14,8 +14,6 @@
     <th>Nume</th>
     <th>Prenume</th>
     <th>Cnp</th>
-    <th>Adresa</th>
-    <th>Debut diabet</th>
     <th>Focad</th>
     <th></th>
     <th></th>
@@ -27,10 +25,7 @@
     <td><%= pacient.nume.downcase.capitalize %></td>
     <td><%= pacient.prenume.downcase.capitalize %></td>
     <td><%= pacient.cnp %></td>
-    <td><%= pacient.adresa %></td>
-    <td><%= pacient.debut_diabet %></td>
     <td><%= pacient.focad %></td>
-    <td><%= link_to 'Show', pacient %></td>
     <td><%= link_to 'Edit', edit_pacient_path(pacient) %></td>
     <td><%= link_to 'Destroy', pacient, method: :delete, data: { confirm: 'Are you sure?' } %></td>
     <td><%= link_to 'Adauga Evaluare' %></td>
