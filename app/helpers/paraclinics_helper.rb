@@ -1,0 +1,2 @@
+module ParaclinicsHelper
+end

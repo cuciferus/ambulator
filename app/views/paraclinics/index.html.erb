@@ -1,0 +1,27 @@
+<h1>Listing paraclinics</h1>
+
+<table>
+  <tr>
+    <th>Nume</th>
+    <th>Valoare</th>
+    <th>Evaluare</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @paraclinics.each do |paraclinic| %>
+  <tr>
+    <td><%= paraclinic.nume %></td>
+    <td><%= paraclinic.valoare %></td>
+    <td><%= paraclinic.evaluare %></td>
+    <td><%= link_to 'Show', paraclinic %></td>
+    <td><%= link_to 'Edit', edit_paraclinic_path(paraclinic) %></td>
+    <td><%= link_to 'Destroy', paraclinic, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Paraclinic', new_paraclinic_path %>

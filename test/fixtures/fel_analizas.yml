@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  nume: MyString
+  unitate_masura: MyString
+  valori_normale: MyString
+  paraclinic: 
+
+two:
+  nume: MyString
+  unitate_masura: MyString
+  valori_normale: MyString
+  paraclinic: 

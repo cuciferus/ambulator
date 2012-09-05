@@ -1,4 +1,4 @@
-<%= form_for([@pacient, @evaluare], :remote => true) do |f| %>
+<%= form_for([@pacient, @evaluare]) do |f| %>
   <% if @evaluare.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@evaluare.errors.count, "error") %> prohibited this evaluare from being saved:</h2>
@@ -17,19 +17,29 @@
   </div>
   <div class="field">
     <%= f.label :diagnostice %><br />
-    <%= f.text_area :diagnostice %>
+    <%= f.text_area :diagnostice, :rows => 4 %>
     <p>
     De preluat/viZualizat cele vechi
     </p>
   </div>
   <hr>
-  <h2> Aici campuri cu analize si consult clinic </h2><hr>
+  <h2> Aici campuri cu analize formular standard si adaugat din fosta evaluare </h2><hr>
+  <% for analiza in @analize %>
+    <%= analiza.nume %>
+    <%= analiza.valori_normale %>
+    <%= analiza.unitate_masura %><br/>
+  <%end %>
+  <%= link_to 'Adauga alta analiza care nu e in lista ', fel_analizas_path%>
+  <h3> Diverse calcule: eGFR, Bart</h3><br/>
+  <h2> Consult clinic</h2><hr>
   <div class="field">
     <%= f.label :recomandari %><br />
-    <%= f.text_area :recomandari %>
+    <%= f.text_area :recomandari , :rows => 4 %>
   </div>
-
+  <hr>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit 'adauga' %>
+    <%= f.submit 'adauga si printeaza' %>
+    <%= f.submit 'adauga, printeaza analize si reteta' %>
   </div>
 <% end %>

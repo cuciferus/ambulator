@@ -1,29 +1,10 @@
-<h1>Listing evaluares</h1>
+<h1>Iata consultatiile pentru <%= @pacient.nume %></h1>
 
 <table>
   <tr>
     <th>Data</th>
-    <th>Diagnostice</th>
-    <th>Recomandari</th>
-    <th>Pacient</th>
+    <th>Vezi ultima reteta</th>
     <th></th>
     <th></th>
     <th></th>
   </tr>
-
-<% @evaluares.each do |evaluare| %>
-  <tr>
-    <td><%= evaluare.data %></td>
-    <td><%= evaluare.diagnostice %></td>
-    <td><%= evaluare.recomandari %></td>
-    <td><%= evaluare.pacient %></td>
-    <td><%= link_to 'Show', evaluare %></td>
-    <td><%= link_to 'Edit', edit_evaluare_path(evaluare) %></td>
-    <td><%= link_to 'Destroy', evaluare, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
-</table>
-
-<br />
-
-<%= link_to 'New Evaluare', new_evaluare_path %>

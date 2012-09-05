@@ -1,0 +1,29 @@
+<h1>Listing fel_analizas</h1>
+
+<table>
+  <tr>
+    <th>Nume</th>
+    <th>Unitate masura</th>
+    <th>Valori normale</th>
+    <th>Paraclinic</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @fel_analizas.each do |fel_analiza| %>
+  <tr>
+    <td><%= fel_analiza.nume %></td>
+    <td><%= fel_analiza.unitate_masura %></td>
+    <td><%= fel_analiza.valori_normale %></td>
+    <td><%= fel_analiza.standard %></td>
+    <td><%= link_to 'Show', fel_analiza %></td>
+    <td><%= link_to 'Modifica', edit_fel_analiza_path(fel_analiza) %></td>
+    <td><%= link_to 'Sterge de tot', fel_analiza, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'Adauga alt tip de analiza', new_fel_analiza_path %>

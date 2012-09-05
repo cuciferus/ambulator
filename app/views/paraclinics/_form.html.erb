@@ -1,0 +1,29 @@
+<%= form_for(@paraclinic) do |f| %>
+  <% if @paraclinic.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@paraclinic.errors.count, "error") %> prohibited this paraclinic from being saved:</h2>
+
+      <ul>
+      <% @paraclinic.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :nume %><br />
+    <%= f.text_field :nume %>
+  </div>
+  <div class="field">
+    <%= f.label :valoare %><br />
+    <%= f.text_field :valoare %>
+  </div>
+  <div class="field">
+    <%= f.label :evaluare %><br />
+    <%= f.text_field :evaluare %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

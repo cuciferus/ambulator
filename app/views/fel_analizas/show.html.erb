@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Nume:</b>
+  <%= @fel_analiza.nume %>
+</p>
+
+<p>
+  <b>Unitate masura:</b>
+  <%= @fel_analiza.unitate_masura %>
+</p>
+
+<p>
+  <b>Valori normale:</b>
+  <%= @fel_analiza.valori_normale %>
+</p>
+
+<p>
+  <b>Paraclinic:</b>
+  <%= @fel_analiza.paraclinic %>
+</p>
+
+
+<%= link_to 'Edit', edit_fel_analiza_path(@fel_analiza) %> |
+<%= link_to 'Back', fel_analizas_path %>

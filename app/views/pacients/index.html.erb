@@ -15,7 +15,7 @@
     <th>Prenume</th>
     <th>Cnp</th>
     <th>Focad</th>
-    <th></th>
+    <th>Actiuni diverse</th>
     <th></th>
     <th></th>
   </tr>
@@ -26,15 +26,17 @@
     <td><%= pacient.prenume.downcase.capitalize %></td>
     <td><%= pacient.cnp %></td>
     <td><%= pacient.focad %></td>
-    <td><%= link_to 'Edit', edit_pacient_path(pacient) %></td>
-    <td><%= link_to 'Destroy', pacient, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= link_to 'Editeaza', edit_pacient_path(pacient) %>|
+    <%= link_to 'Sterge', pacient, method: :delete, data: { confirm: 'Are you sure?' } %></td>
     <td><%= link_to 'Adauga Evaluare', new_pacient_evaluare_path(pacient) %></td>
-    <td><%= link_to 'Vezi evaluari vechi' %> </td>
+    <td><%= link_to 'Vezi evaluari vechi', pacient_evaluares_path(pacient) %> </td>
     <td><%= link_to 'prescrie reteta' %></td>
+    <td><%= link_to 'keto/aranesp' %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
-
+<%= link_to 'Printeaza retete keto de azi' %>
+<%= link_to 'Printeaza retete aranesp de azi' %>
 <%= link_to 'New Pacient', new_pacient_path %>
