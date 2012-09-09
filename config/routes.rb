@@ -1,11 +1,13 @@
 Ambulator::Application.routes.draw do
 
 
-  resources :fel_analizas
+  resources :fel_analizas do
+    resources :paraclinics
+  end
 
   resources :pacients do 
     resources :evaluares do
-      resources :paraclinics
+      resources :paraclinics 
     end
   end
 

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120905162437) do
+ActiveRecord::Schema.define(:version => 20120909053402) do
 
   create_table "evaluares", :force => true do |t|
     t.date     "data"
@@ -28,13 +28,10 @@ ActiveRecord::Schema.define(:version => 20120905162437) do
     t.string   "nume"
     t.string   "unitate_masura"
     t.string   "valori_normale"
-    t.integer  "paraclinic_id"
     t.datetime "created_at",     :null => false
     t.datetime "updated_at",     :null => false
     t.boolean  "standard"
   end
-
-  add_index "fel_analizas", ["paraclinic_id"], :name => "index_fel_analizas_on_paraclinic_id"
 
   create_table "pacients", :force => true do |t|
     t.string   "nume"
@@ -51,10 +48,12 @@ ActiveRecord::Schema.define(:version => 20120905162437) do
     t.string   "nume"
     t.float    "valoare"
     t.integer  "evaluare_id"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+    t.integer  "fel_analiza_id"
   end
 
   add_index "paraclinics", ["evaluare_id"], :name => "index_paraclinics_on_evaluare_id"
+  add_index "paraclinics", ["fel_analiza_id"], :name => "index_paraclinic_on_fel_analiza_id"
 
 end
