@@ -25,12 +25,15 @@
   <hr>
   <h2> Aici campuri cu analize formular standard si adaugat din fosta evaluare </h2><hr>
   <h2> Analize standard sau cele de data trecuta </h2>
-  <% for analiza in @paraclinice %>
-    <%= analiza.fel_analiza.nume %>
-    <%= analiza.valoare %>
-    <%= analiza.fel_analiza.valori_normale %>
-    <%= analiza.fel_analiza.unitate_masura %><br/>
-  <%end %>
+  <%= f.fields_for :paraclinics do |g| %><br />
+    <%= g.text_field :valoare %>
+    <%# @paraclinice %>
+  <% end %>
+
+    <%# g.text_field :valoare %>
+    <%# g.label :valori_normale %>
+    <%# g.label :unitate_masura %><br/>
+  <%#end %>
   <%= link_to 'Adauga alta analiza care nu e in lista ', fel_analizas_path%>
   <h3> Diverse calcule: eGFR, Bart</h3><br/>
   <h2> Consult clinic</h2><hr>

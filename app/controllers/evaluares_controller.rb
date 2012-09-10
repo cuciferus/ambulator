@@ -5,9 +5,9 @@ class EvaluaresController < InheritedResources::Base
     @pacient = Pacient.find(params[:pacient_id])
     @evaluare = Evaluare.new
     @paraclinice = Array.new
-    analize_standard = FelAnaliza.where(:standard => true)
-    analize_standard.each do |analiza|
-      @paraclinice.append Paraclinic.create!(:fel_analiza_id => analiza.id)
+    @analize_standard = FelAnaliza.where(:standard => true)
+    @analize_standard.each do |analiza|
+      @paraclinice.append(@evaluare.paraclinics.build({:fel_analiza_id => analiza.id}))
     end
   end
 end
