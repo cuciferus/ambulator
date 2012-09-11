@@ -29,11 +29,11 @@
     <%= f.fields_for :paraclinics, paraclinic do |g| %><br />
       <%= @analize_standard[index].nume %>
       <%= g.text_field :valoare %>
-      <%# @analize_standard[index].unitate_masura %>
-      <%# @analize_standard[index].valori_normale %><br/>
+      <%= @analize_standard[index].unitate_masura %>
+      <%= @analize_standard[index].valoare_maxima %><br/>
     <% end %>
   <% end %>
-  <%= link_to 'Adauga alta analiza care nu e in lista ', fel_analizas_path%>
+  <%= link_to 'Adauga alta analiza care nu e in lista ', new_fel_analiza_path%>
   <h3> Diverse calcule: eGFR, Bart</h3><br/>
   <h2> Consult clinic</h2><hr>
   <div class="field">
