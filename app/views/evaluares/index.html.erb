@@ -3,8 +3,17 @@
 <table>
   <tr>
     <th>Data</th>
+    <th> Vezi detalii </th>
     <th>Vezi ultima reteta</th>
     <th></th>
     <th></th>
     <th></th>
   </tr>
+  <% for evaluare in @pacient.evaluares %>
+    <tr>
+      <td><%= evaluare.data %></td>
+      <td><%= evaluare.diagnostice %></td>
+      <td><%= link_to pacient_evaluare_path(evaluare) %></td>
+    </tr>
+  <% end %>
+</table>
