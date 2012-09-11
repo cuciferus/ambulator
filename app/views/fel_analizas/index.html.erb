@@ -1,4 +1,10 @@
-<h1>Listing fel_analizas</h1>
+<h1>Lista analize</h1>
+<%= form_tag pacients_path, :method => 'get' do %>
+  <p> 
+    <%= text_field_tag :search, params[:search] %>
+    <%= submit_tag "Cauta Analiza", :name => nil %>
+    </p>
+<% end %>
 
 <table>
   <tr>
