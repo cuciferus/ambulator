@@ -1,6 +1,6 @@
 class EvaluaresController < InheritedResources::Base
   belongs_to :pacient
-  actions :index, :new, :create
+  actions :index, :new, :create, :show, :edit
   def new
     @pacient = Pacient.find(params[:pacient_id])
     @evaluare = Evaluare.new

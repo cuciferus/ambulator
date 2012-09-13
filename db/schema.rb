@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120911180349) do
+ActiveRecord::Schema.define(:version => 20120912200603) do
 
   create_table "evaluares", :force => true do |t|
     t.date     "data"
@@ -46,7 +46,6 @@ ActiveRecord::Schema.define(:version => 20120911180349) do
   end
 
   create_table "paraclinics", :force => true do |t|
-    t.string   "nume"
     t.float    "valoare"
     t.integer  "evaluare_id"
     t.datetime "created_at",     :null => false
