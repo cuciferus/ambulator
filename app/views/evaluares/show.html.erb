@@ -1,4 +1,5 @@
 <p id="notice"><%= notice %></p>
+<h1> Evaluarea lui <%= @pacient.nume %> din data de <%= @evaluare.data %> </h1>
 
 <p>
   <b>Data:</b>
@@ -10,16 +11,24 @@
   <%= @evaluare.diagnostice %>
 </p>
 
+<table>
+<tr>
+  <th> Tip Analiza </th>
+  <th> Valoare </th>
+  <th> Valoare minima</th>
+  <th> Valoare maxima</th>
+</tr>
+<tr>
+  <% for analiza in @evaluare.paraclinics %>
+    <td><%= FelAnaliza.find(analiza.fel_analiza_id).nume %>
+    <td><%= analiza.valoare %></td>
+</tr>
+<% end %>
+</table>
 <p>
   <b>Recomandari:</b>
   <%= @evaluare.recomandari %>
 </p>
 
-<p>
-  <b>Pacient:</b>
-  <%= @evaluare.pacient %>
-</p>
-
-
-<%= link_to 'Edit', edit_evaluare_path(@evaluare) %> |
-<%= link_to 'Back', evaluares_path %>
+<%= link_to 'Edit', edit_pacient_evaluare_path(@pacient, @evaluare) %> 
+<%= link_to 'Inapoi', pacient_evaluares_path(@pacient) %>

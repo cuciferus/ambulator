@@ -12,7 +12,7 @@ class EvaluaresController < ApplicationController
   # GET /evaluares/1.json
   def show
     @pacient = Pacient.find(params[:pacient_id])
-    @evaluare = @pacient.evaluare(params[:evaluare])
+    @evaluare = @pacient.evaluares.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
