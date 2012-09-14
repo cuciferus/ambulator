@@ -1,3 +1,2 @@
-class ParaclinicsController < InheritedResources::Base
-  belongs_to :evaluare
+class ParaclinicsController < ApplicationController
 end

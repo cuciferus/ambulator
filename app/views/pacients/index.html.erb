@@ -29,7 +29,7 @@
     <td><%= link_to 'Editeaza', edit_pacient_path(pacient) %>|
     <%= link_to 'Sterge', pacient, method: :delete, data: { confirm: 'Are you sure?' } %></td>
     <td><%= link_to 'Adauga Evaluare', new_pacient_evaluare_path(pacient) %></td>
-    <td><%= link_to 'Vezi evaluari vechi', pacient_evaluares_path(pacient) %> </td>
+    <td><%= link_to 'Vezi evaluari vechi', pacient_evaluares_url(pacient) %> </td>
     <td><%= link_to 'prescrie reteta' %></td>
     <td><%= link_to 'keto/aranesp' %></td>
   </tr>
