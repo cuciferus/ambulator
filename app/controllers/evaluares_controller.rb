@@ -11,11 +11,11 @@ class EvaluaresController < ApplicationController
   # GET /evaluares/1
   # GET /evaluares/1.json
   def show
-    @evaluare = Evaluare.find(params[:id])
+    @pacient = Pacient.find(params[:pacient_id])
+    @evaluare = @pacient.evaluare(params[:evaluare])
 
     respond_to do |format|
       format.html # show.html.erb
-      format.json { render json: @evaluare }
     end
   end
 
