@@ -8,20 +8,25 @@
 
 <p>
   <b>Diagnostice:</b>
-  <%= @evaluare.diagnostice %>
+  <%= @evaluare.diagnostice.downcase.capitalize %> capitalizeaza fiecare cuvant
 </p>
 
 <table>
 <tr>
   <th> Tip Analiza </th>
   <th> Valoare </th>
+  <th> Unitate de masura </td>
   <th> Valoare minima</th>
   <th> Valoare maxima</th>
 </tr>
 <tr>
   <% for analiza in @evaluare.paraclinics %>
-    <td><%= FelAnaliza.find(analiza.fel_analiza_id).nume %>
+    <% fel_analiza = FelAnaliza.find(analiza.fel_analiza_id) %>
+    <td><%= fel_analiza.nume %></td>
     <td><%= analiza.valoare %></td>
+    <td><%= fel_analiza.unitate_masura %></td>
+    <td><%= fel_analiza.valoare_minima %></td>
+
 </tr>
 <% end %>
 </table>
@@ -30,5 +35,5 @@
   <%= @evaluare.recomandari %>
 </p>
 
-<%= link_to 'Edit', edit_pacient_evaluare_path(@pacient, @evaluare) %> 
+<%= link_to 'Edit', edit_pacient_evaluare_path(@pacient, @evaluare) %> asta nu merge inca<br />
 <%= link_to 'Inapoi', pacient_evaluares_path(@pacient) %>

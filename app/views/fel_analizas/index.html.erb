@@ -1,17 +1,10 @@
 <h1>Lista analize</h1>
-<%= form_tag pacients_path, :method => 'get' do %>
-  <p> 
-    <%= text_field_tag :search, params[:search] %>
-    <%= submit_tag "Cauta Analiza", :name => nil %>
-    </p>
-<% end %>
-
 <table>
   <tr>
     <th>Nume</th>
     <th>Unitate masura</th>
-    <th>Valori normale</th>
-    <th>Paraclinic</th>
+    <th>Valoare maxima </th>
+    <th>Valoare minima</th>
     <th>Standard</th>
     <th></th>
     <th></th>
@@ -26,10 +19,12 @@
     <td><%= fel_analiza.standard %></td>
     <td><%= link_to 'Modifica', edit_fel_analiza_path(fel_analiza) %></td>
     <td><%= link_to 'Sterge de tot', fel_analiza, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= link_to 'Adauga la evaluare' %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
-
-<%= link_to 'Adauga alt tip de analiza', new_fel_analiza_path %>
+<hr>
+<%= link_to 'Adauga alt tip de analiza', new_fel_analiza_path %><br />
+<%= link_to 'Fa un scor' %>

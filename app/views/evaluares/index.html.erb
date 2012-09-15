@@ -12,8 +12,8 @@
   <% for evaluare in @pacient.evaluares %>
     <tr>
       <td><%= evaluare.data %></td>
-      <td><%# evaluare.diagnostice %></td>
-      <td><%= link_to 'vezi',pacient_evaluare_path(@pacient, evaluare) %></td>
+      <td><%= link_to 'detalii',pacient_evaluare_path(@pacient, evaluare) %></td>
     </tr>
   <% end %>
 </table>
+<%= link_to 'Adauga alta evaluare', new_pacient_evaluare_path(@pacient) %>
