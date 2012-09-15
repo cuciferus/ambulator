@@ -1,0 +1,3 @@
+pentru adaugat paraclinici noi in evaluare#new
+You could probably do that by making the link bring up anew form for a paraclinic (using JavaScript) and then when the form is submitted it writes a hidden field to the page to pass through the 
+               new paraclinic's ID along with the other data of the form?

@@ -1,15 +1,15 @@
 Ambulator::Application.routes.draw do
 
 
-  resources :fel_analizas do
-    resources :paraclinics
-  end
-
   resources :pacients do 
     resources :evaluares do
       resources :paraclinics 
     end
   end
+  resources :fel_analizas do
+    resources :paraclinics
+  end
+
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

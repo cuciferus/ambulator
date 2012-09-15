@@ -1,4 +1,5 @@
 class EvaluaresController < ApplicationController
+
   def index
     @pacient = Pacient.find(params[:pacient_id])
     @evaluares = @pacient.evaluares
