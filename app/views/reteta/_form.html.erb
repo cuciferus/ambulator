@@ -1,0 +1,33 @@
+<%= form_for(@retetum) do |f| %>
+  <% if @retetum.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@retetum.errors.count, "error") %> prohibited this retetum from being saved:</h2>
+
+      <ul>
+      <% @retetum.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :data %><br />
+    <%= f.date_select :data %>
+  </div>
+  <div class="field">
+    <%= f.label :medicamente %><br />
+    <%= f.text_field :medicamente %>
+  </div>
+  <div class="field">
+    <%= f.label :retetar %><br />
+    <%= f.text_field :retetar %>
+  </div>
+  <div class="field">
+    <%= f.label :pacient %><br />
+    <%= f.text_field :pacient %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

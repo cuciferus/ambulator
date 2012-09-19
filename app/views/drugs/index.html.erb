@@ -1,0 +1,31 @@
+<h1>Listing drugs</h1>
+
+<table>
+  <tr>
+    <th>Nume</th>
+    <th>Dci</th>
+    <th>Cantitate</th>
+    <th>Cod</th>
+    <th>Diagnostic</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @drugs.each do |drug| %>
+  <tr>
+    <td><%= drug.nume %></td>
+    <td><%= drug.dci %></td>
+    <td><%= drug.cantitate %></td>
+    <td><%= drug.cod %></td>
+    <td><%= drug.diagnostic %></td>
+    <td><%= link_to 'Show', drug %></td>
+    <td><%= link_to 'Edit', edit_drug_path(drug) %></td>
+    <td><%= link_to 'Destroy', drug, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Drug', new_drug_path %>

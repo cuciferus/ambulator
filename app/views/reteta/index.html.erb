@@ -1,0 +1,29 @@
+<h1>Listing reteta</h1>
+
+<table>
+  <tr>
+    <th>Data</th>
+    <th>Medicamente</th>
+    <th>Retetar</th>
+    <th>Pacient</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @reteta.each do |retetum| %>
+  <tr>
+    <td><%= retetum.data %></td>
+    <td><%= retetum.medicamente %></td>
+    <td><%= retetum.retetar %></td>
+    <td><%= retetum.pacient %></td>
+    <td><%= link_to 'Show', retetum %></td>
+    <td><%= link_to 'Edit', edit_retetum_path(retetum) %></td>
+    <td><%= link_to 'Destroy', retetum, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Retetum', new_retetum_path %>

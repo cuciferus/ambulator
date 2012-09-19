@@ -1,0 +1,25 @@
+<%= form_for(@retetar) do |f| %>
+  <% if @retetar.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@retetar.errors.count, "error") %> prohibited this retetar from being saved:</h2>
+
+      <ul>
+      <% @retetar.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :medic %><br />
+    <%= f.text_field :medic %>
+  </div>
+  <div class="field">
+    <%= f.label :tip %><br />
+    <%= f.text_field :tip %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

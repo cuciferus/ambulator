@@ -23,11 +23,14 @@ class EvaluaresController < ApplicationController
   # GET /evaluares/new
   # GET /evaluares/new.json
   def new
-    @pacient = Pacient.find(params[:pacient_id])
+    @pacient = Pacient.includes(:evaluares => [:paraclinics]).find(params[:pacient_id])
     @evaluare = Evaluare.new
     @analize_standard = FelAnaliza.where(:standard => true)
+    @ultimele_analize = @pacient.evaluares.last.paraclinics
+    
     @analize_standard.each do |analiza|
       @evaluare.paraclinics.build({:fel_analiza_id => analiza.id})
+
     end
     respond_to do |format|
       format.html # new.html.erb

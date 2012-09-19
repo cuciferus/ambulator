@@ -16,26 +16,45 @@
     <%= f.date_select :data %>
   </div>
   <div class="field">
+    <% unless @pacient.evaluares.last.diagnostice.nil? %>
+      <h2> Diagnostice cunoscute la data de <%= @pacient.evaluares.last.data %> </h2>
+      <%= f.label @pacient.evaluares.last.diagnostice %>
+    <% end %>
+  </div>
+  <div class="field">
     <%= f.label :diagnostice %><br />
     <%= f.text_area :diagnostice, :rows => 4 %>
-    <p>
-    De preluat/viZualizat cele vechi
-    </p>
   </div>
   <hr>
   <h2> Aici campuri cu analize formular standard si adaugat din fosta evaluare </h2><hr>
   <h2> Analize standard sau cele de data trecuta </h2>
+
+  <%= debug @ultimele_analize[3].valoare %>
+  <table>
+    <tr><th>Tip analiza</th>
+      <th> Valoare anterioara</th>
+      <th> Valoare </th>
+      <th> Unitate de masura </th>
+      <th> Fizilogic maxim</th></tr>
   <% @evaluare.paraclinics.each_with_index do |paraclinic, index| %>
-    <%= f.fields_for :paraclinics, paraclinic do |g| %><br />
-      <%= @analize_standard[index].nume %>
-      <%= g.text_field :valoare %>
-      <%= @analize_standard[index].unitate_masura %>
-      <%= @analize_standard[index].valoare_maxima %><br/>
+    <%= f.fields_for :paraclinics, paraclinic do |g| %>
+      <tr><td><%= @analize_standard[index].nume %></td>
+        <td><% unless @ultimele_analize[index].nil? & @ultimele_analize[index].fel_analiza_id != @analize_standard[index] %>
+            <%= @ultimele_analize[index].valoare %>
+          <% end %></td>
+      <td><%= g.text_field :valoare %></td>
+      <td><%= @analize_standard[index].unitate_masura %></td>
+      <td><%= @analize_standard[index].valoare_maxima %></td></tr>
     <% end %>
   <% end %>
-  <%= link_to 'Add a paraclinic that is not on the list', new_pacient_evaluare_paraclinic_path(@pacient, @evaluare)%>
+</table>
+  <%# link_to 'Add a paraclinic that is not on the list', new_pacient_evaluare_paraclinic_path(@pacient, @evaluare)%>
   <h3> Diverse calcule: eGFR, Bart</h3><br/>
   <h2> Consult clinic</h2><hr>
+  <% unless @pacient.evaluares.last.recomandari.nil? %>
+    <h2> Recomandarile facute in <%= @pacient.evaluares.last.data %></h2>
+    <%= f.label @pacient.evaluares.last.recomandari %>
+  <% end %>
   <div class="field">
     <%= f.label :recomandari %><br />
     <%= f.text_area :recomandari , :rows => 4 %>

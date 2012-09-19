@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Data:</b>
+  <%= @retetum.data %>
+</p>
+
+<p>
+  <b>Medicamente:</b>
+  <%= @retetum.medicamente %>
+</p>
+
+<p>
+  <b>Retetar:</b>
+  <%= @retetum.retetar %>
+</p>
+
+<p>
+  <b>Pacient:</b>
+  <%= @retetum.pacient %>
+</p>
+
+
+<%= link_to 'Edit', edit_retetum_path(@retetum) %> |
+<%= link_to 'Back', reteta_path %>

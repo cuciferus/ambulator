@@ -1,6 +1,15 @@
 Ambulator::Application.routes.draw do
 
 
+  resources :retetars
+
+  resources :reteta
+
+
+  resources :drugs
+
+  resources :medics
+
   resources :pacients do 
     resources :evaluares do
       resources :paraclinics 
