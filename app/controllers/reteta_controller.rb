@@ -24,6 +24,7 @@ class RetetaController < ApplicationController
   # GET /reteta/new
   # GET /reteta/new.json
   def new
+    @pacient = Pacient.find(params[:pacient_id])
     @retetum = Retetum.new
 
     respond_to do |format|

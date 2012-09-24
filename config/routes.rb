@@ -3,7 +3,6 @@ Ambulator::Application.routes.draw do
 
   resources :retetars
 
-  resources :reteta
 
 
   resources :drugs
@@ -11,6 +10,7 @@ Ambulator::Application.routes.draw do
   resources :medics
 
   resources :pacients do 
+    resources :reteta
     resources :evaluares do
       resources :paraclinics 
     end
