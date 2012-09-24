@@ -1,6 +1,8 @@
 namespace :db do
   namespace :seed  do
       task :medici => :environment do
+        desc "Sterg medici actuali"
+        Medic.delete_all
         desc "Adaug medici in baza de date"
         Medic.create!(:nume => "Serafinceanu", :prenume => "Cristian", :cod_parafa => "282828")
         Medic.create!(:nume => "Craciun", :prenume =>"Anne-Marie", :cod_parafa =>"999")
@@ -50,6 +52,14 @@ namespace :db do
             adauga_analiza(evaluare, row[coloana], coloana) unless row[coloana].nil?
           end
           puts pacient.nume
+        end
+      end
+        task :medicamente =>:environment  do
+          desc "acum sterg medicamentele"
+          Drug.delete_all
+          desc "le adaug pe cele pa care le stiu io"
+          Drug.create!(:nume => "Siofor", :dci => "Metformin", :cantitate => 500, :cod => "PN5C2 242", :diagnostic => "Diabet zaharat tip 2")
+          Drug.create!(:nume => "Diaprel", :dci => "Gliclazid", :cantitate => 60, :cod => "PN5C2 242", :diagnostic => "Diabet zaharat tip 2")
         end
       end
 end
