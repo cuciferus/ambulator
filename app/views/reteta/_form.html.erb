@@ -1,4 +1,4 @@
-<%= form_for(@retetum) do |f| %>
+<%= form_for([@pacient,@retetum]) do |f| %>
   <% if @retetum.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@retetum.errors.count, "error") %> prohibited this retetum from being saved:</h2>
@@ -23,11 +23,8 @@
     <%= f.label :retetar %><br />
     <%= f.text_field :retetar %>
   </div>
-  <div class="field">
-    <%= f.label :pacient %><br />
-    <%= f.text_field :pacient %>
-  </div>
   <div class="actions">
     <%= f.submit %>
+    <%= f.submit "Printeaza reteta" %>
   </div>
 <% end %>

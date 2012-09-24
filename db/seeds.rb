@@ -27,30 +27,31 @@
 
 #Paraclinic.delete_all
 require "csv"
-def adauga_analiza(evaluare, valoare, index)
+#def adauga_analiza(evaluare, valoare, index)
   #puts 'adaug analiza',valoare, 'cu index',index
-  analize = {0=>"acid uric", 1=>"albumina", 2=>"calciu total", 3=>"creatinina", 4=>"fosfor", 5=> "fosfataza alcalina", 6=> "tgop", 7=>"hemoglobina glicozilata", 8=> "uree", 9=>"trigliceride", 10=>"colesterol", 
-    11=>"leucocite", 12=>"hemoglobina", 13 =>"hematocrit", 14=>"trombocite", 15=>"bicarbonat", 16=> "leucocite pipi", 17=>"hematii pipi", 18=>"microalbuminurie", 19=>"raport a/c"}
-  if index == 6 #TODO trebuie rescrisa
-    tgo, tgp = valoare.split('/')
-    puts tgo, tgp
-    fel_analiza = FelAnaliza.where(:nume => 'tgo').first
-    puts 'am adaugat tgo'
-    evaluare.paraclinics.create!(:valoare => tgo, :fel_analiza_id => fel_analiza.id)
-    fel_analiza = FelAnaliza.where(:nume => 'tgp').first
-    evaluare.paraclinics.create!(:valoare =>tgp, :fel_analiza_id => fel_analiza.id)
-  else
-  fel_analiza = FelAnaliza.where(:nume => analize[index]).first
-  evaluare.paraclinics.create!(:valoare => valoare, :fel_analiza_id => fel_analiza.id)
- end
-end
+  #analize = {0=>"acid uric", 1=>"albumina", 2=>"calciu total", 3=>"creatinina", 4=>"fosfor", 5=> "fosfataza alcalina", 6=> "tgop", 7=>"hemoglobina glicozilata", 8=> "uree", 9=>"trigliceride", 10=>"colesterol", 
+    #11=>"leucocite", 12=>"hemoglobina", 13 =>"hematocrit", 14=>"trombocite", 15=>"bicarbonat", 16=> "leucocite pipi", 17=>"hematii pipi", 18=>"microalbuminurie", 19=>"raport a/c"}
+  #if index == 6 #TODO trebuie rescrisa
+    #tgo, tgp = valoare.split('/')
+    #puts tgo, tgp
+    #fel_analiza = FelAnaliza.where(:nume => 'tgo').first
+    #puts 'am adaugat tgo'
+    #evaluare.paraclinics.create!(:valoare => tgo, :fel_analiza_id => fel_analiza.id)
+    #fel_analiza = FelAnaliza.where(:nume => 'tgp').first
+    #evaluare.paraclinics.create!(:valoare =>tgp, :fel_analiza_id => fel_analiza.id)
+  #else
+  #fel_analiza = FelAnaliza.where(:nume => analize[index]).first
+  #evaluare.paraclinics.create!(:valoare => valoare, :fel_analiza_id => fel_analiza.id)
+ #end
+#end
 
-CSV.foreach("#{Rails.root}/db/analize.csv") do |row|
-  pacient = Pacient.where(:cnp => row[-2]).first
-  evaluare = pacient.evaluares.create!(:data => row[-1], :diagnostice => row[-4], :recomandari => row[-3])
-  for coloana in (0..19).to_a
-    adauga_analiza(evaluare, row[coloana], coloana) unless row[coloana].nil?
-  end
-  puts pacient.nume
-end
-
+#CSV.foreach("#{Rails.root}/db/analize.csv") do |row|
+  #pacient = Pacient.where(:cnp => row[-2]).first
+  #evaluare = pacient.evaluares.create!(:data => row[-1], :diagnostice => row[-4], :recomandari => row[-3])
+  #for coloana in (0..19).to_a
+    #adauga_analiza(evaluare, row[coloana], coloana) unless row[coloana].nil?
+  #end
+  #puts pacient.nume
+#end
+#Medic.create!(:nume => "Serafinceanu", :prenume => "Cristian", :cod_parafa => "282828")
+#Medic.create!(:nume => "Craciun", :prenume =>"Anne-Marie", :cod_parafa =>"999")

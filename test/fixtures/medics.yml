@@ -1,11 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  nume: MyString
-  prenume: MyString
-  cod_parafa: MyString
+  nume: Craciun
+  prenume: Anne-Marie
+  cod_parafa: 373522
 
 two:
-  nume: MyString
-  prenume: MyString
-  cod_parafa: MyString
+  nume: Serafinceanu
+  prenume: Cristian
+  cod_parafa: 99823
