@@ -16,13 +16,19 @@
     <%= f.date_select :data %>
   </div>
   <div class="field">
-    <%= f.label :medicamente %><br />
-    <%= f.text_field :medicamente %>
+    
+    <%= collection_select(:drugs, :medicament_id, Drug.all, :id, :nume, :prompt =>"Alege o pastila") %>
+    <%= link_to 'Adauga in reteta'%>
   </div>
   <div class="field">
     <%= f.label :retetar %><br />
     <%= f.text_field :retetar %>
   </div>
+  <table>
+    <th><tr> Medicament</tr>
+      <tr>Cantitate</tr></th>
+      </table>
+
   <div class="actions">
     <%= f.submit "Printeaza reteta" %>
   </div>
