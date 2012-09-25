@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  nume: MyString
+  strada: MyString
+  sector: MyString
+  oras: MyString
+  contract: MyString
+  medic: 
+
+two:
+  nume: MyString
+  strada: MyString
+  sector: MyString
+  oras: MyString
+  contract: MyString
+  medic: 

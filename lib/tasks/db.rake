@@ -1,10 +1,11 @@
 namespace :db do
   namespace :seed  do
       task :medici => :environment do
-        desc "Sterg medici actuali"
+        desc "Sterg medicii si spitalele "
         Medic.delete_all
         desc "Adaug medici in baza de date"
-        Medic.create!(:nume => "Serafinceanu", :prenume => "Cristian", :cod_parafa => "282828")
+        Medic.create!(:nume => "Serafinceanu", :prenume => "Cristian", :cod_parafa => "282828", 
+                      :hospital_attributes => {:nume =>"I.D.N.M.B. Paulescu", :strada => "Ion Movila nr 5-7", :sector => "sector 2", :oras => "MB", :contract => "U3"})
         Medic.create!(:nume => "Craciun", :prenume =>"Anne-Marie", :cod_parafa =>"999")
       end
       task :pacienti => :environment do

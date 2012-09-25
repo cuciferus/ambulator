@@ -1,16 +1,18 @@
 Ambulator::Application.routes.draw do
 
 
+
   resources :line_drugs
 
   resources :retetars
 
 
 
-  resources :drugs
+  resources :drugs 
 
-  resources :medics
-
+  resources :medics do 
+    resources :hospitals
+  end
   resources :pacients do 
     resources :reteta do
       resources :drugs_retetum

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120925190003) do
+ActiveRecord::Schema.define(:version => 20120925200848) do
 
   create_table "drugs", :force => true do |t|
     t.string   "nume"
@@ -55,6 +55,19 @@ ActiveRecord::Schema.define(:version => 20120925190003) do
     t.float    "valoare_minima"
     t.float    "valoare_maxima"
   end
+
+  create_table "hospitals", :force => true do |t|
+    t.string   "nume"
+    t.string   "strada"
+    t.string   "sector"
+    t.string   "oras"
+    t.string   "contract"
+    t.integer  "medic_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "hospitals", ["medic_id"], :name => "index_hospitals_on_medic_id"
 
   create_table "line_drugs", :force => true do |t|
     t.integer  "cantitate"
