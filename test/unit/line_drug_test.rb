@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class DrugsRetetaTest < ActiveSupport::TestCase
+class LineDrugTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

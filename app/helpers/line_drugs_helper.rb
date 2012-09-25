@@ -1,0 +1,2 @@
+module LineDrugsHelper
+end

@@ -26,6 +26,7 @@ class RetetaController < ApplicationController
   def new
     @pacient = Pacient.find(params[:pacient_id])
     @retetum = Retetum.new
+    medicamente = @retetum.drugs.build
 
     respond_to do |format|
       format.html # new.html.erb

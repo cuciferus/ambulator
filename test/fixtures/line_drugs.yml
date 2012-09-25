@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  cantitate: 1
+  retetum: 
+  pacient: 
+
+two:
+  cantitate: 1
+  retetum: 
+  pacient: 
