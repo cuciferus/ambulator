@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120919193536) do
+ActiveRecord::Schema.define(:version => 20120925042404) do
 
   create_table "drugs", :force => true do |t|
     t.string   "nume"
@@ -22,6 +22,17 @@ ActiveRecord::Schema.define(:version => 20120919193536) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
+  create_table "drugs_reteta", :force => true do |t|
+    t.integer  "retetum_id"
+    t.integer  "drug_id"
+    t.string   "cantitate"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "drugs_reteta", ["drug_id"], :name => "index_drugs_reteta_on_drug_id"
+  add_index "drugs_reteta", ["retetum_id"], :name => "index_drugs_reteta_on_retetum_id"
 
   create_table "evaluares", :force => true do |t|
     t.date     "data"
@@ -77,14 +88,12 @@ ActiveRecord::Schema.define(:version => 20120919193536) do
 
   create_table "reteta", :force => true do |t|
     t.date     "data"
-    t.integer  "medicamente_id"
     t.integer  "retetar_id"
     t.integer  "pacient_id"
-    t.datetime "created_at",     :null => false
-    t.datetime "updated_at",     :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
-  add_index "reteta", ["medicamente_id"], :name => "index_reteta_on_medicamente_id"
   add_index "reteta", ["pacient_id"], :name => "index_reteta_on_pacient_id"
   add_index "reteta", ["retetar_id"], :name => "index_reteta_on_retetar_id"
 
