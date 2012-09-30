@@ -33,6 +33,7 @@ class EvaluaresController < ApplicationController
 
     end
     respond_to do |format|
+      format.js
       format.html # new.html.erb
       format.json { render json: @evaluare }
     end
@@ -52,9 +53,11 @@ class EvaluaresController < ApplicationController
 
     respond_to do |format|
       if @evaluare.save
+        format.js
         format.html { redirect_to @pacient, notice: 'Evaluare was successfully created.' }
         format.json { render json: @evaluare, status: :created, location: @evaluare }
       else
+        format.js
         format.html { render action: "new" }
         format.json { render json: @evaluare.errors, status: :unprocessable_entity }
       end
