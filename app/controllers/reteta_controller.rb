@@ -29,6 +29,7 @@ class RetetaController < ApplicationController
     medicamente = @retetum.drugs.build
 
     respond_to do |format|
+      format.js
       format.html # new.html.erb
       format.json { render json: @retetum }
     end
@@ -46,9 +47,11 @@ class RetetaController < ApplicationController
 
     respond_to do |format|
       if @retetum.save
+        format.js
         format.html { redirect_to @retetum, notice: 'Retetum was successfully created.' }
         format.json { render json: @retetum, status: :created, location: @retetum }
       else
+        format.js
         format.html { render action: "new" }
         format.json { render json: @retetum.errors, status: :unprocessable_entity }
       end

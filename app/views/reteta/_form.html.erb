@@ -1,3 +1,4 @@
+<%= javascript_include_tag 'reteta.js.coffee' %>
 <%= form_for([@pacient,@retetum]) do |f| %>
   <% if @retetum.errors.any? %>
     <div id="error_explanation">
@@ -16,13 +17,13 @@
     <%= f.date_select :data %>
   </div>
   <div class="field">
+    <%= collection_select :retetar, :medic_id, Retetar.all << Retetar.new, :id, :tip, :prompt =>"Alege retetaru pa care scrii reteta", :include_blank => false%>
+  </div>
+
+  <div class="field">
     
     <%= collection_select(:drugs, :medicament_id, Drug.all, :id, :nume, :prompt =>"Alege o pastila") %>
     <%= link_to 'Adauga in reteta'%>
-  </div>
-  <div class="field">
-    <%= f.label :retetar %><br />
-    <%= f.text_field :retetar %>
   </div>
   <table>
     <th><tr> Medicament</tr>

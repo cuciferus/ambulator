@@ -1,3 +1,4 @@
+<% javascript 'evaluares.js.coffee' %>
 <%= form_for([@pacient, @evaluare]) do |f| %>
   <% if @evaluare.errors.any? %>
     <div id="error_explanation">
@@ -18,18 +19,18 @@
   <div class="field">
     <% unless @pacient.evaluares.last.diagnostice.nil? %>
       <h2> Diagnostice cunoscute la data de <%= @pacient.evaluares.last.data %> </h2>
-      <%= f.label @pacient.evaluares.last.diagnostice %>
+      <%= f.label @pacient.evaluares.last.diagnostice, :id=>"diagnostice_vechi" %>
     <% end %>
   </div>
   <div class="field">
-    <%= f.label :diagnostice %><br />
+    <%= f.label :diagnostice %>   | <a href="#" id="preluare_diagnostice" > Preia Diagnostice</a>
     <%= f.text_area :diagnostice, :rows => 4 %>
   </div>
   <hr>
   <h2> Aici campuri cu analize formular standard si adaugat din fosta evaluare </h2><hr>
   <h2> Analize standard sau cele de data trecuta </h2>
 
-  <%= debug @ultimele_analize[3].valoare %>
+  
   <table>
     <tr><th>Tip analiza</th>
       <th> Valoare anterioara</th>
@@ -39,7 +40,7 @@
   <% @evaluare.paraclinics.each_with_index do |paraclinic, index| %>
     <%= f.fields_for :paraclinics, paraclinic do |g| %>
       <tr><td><%= @analize_standard[index].nume %></td>
-        <td><% unless @ultimele_analize[index].nil? & @ultimele_analize[index].fel_analiza_id != @analize_standard[index] %>
+        <td><% unless not defined? @ultimele_analize[index] & @ultimele_analize[index].fel_analiza_id != @analize_standard[index] %>
             <%= @ultimele_analize[index].valoare %>
           <% end %></td>
       <td><%= g.text_field :valoare %></td>
@@ -53,10 +54,12 @@
   <h2> Consult clinic</h2><hr>
   <% unless @pacient.evaluares.last.recomandari.nil? %>
     <h2> Recomandarile facute in <%= @pacient.evaluares.last.data %></h2>
-    <%= f.label @pacient.evaluares.last.recomandari %>
+    <%= f.label @pacient.evaluares.last.recomandari, :id => "recomandari_vechi" %>
   <% end %>
+  <br />
   <div class="field">
-    <%= f.label :recomandari %><br />
+    <%= f.label :recomandari %>  
+    <a href="#" id="preia_recomandari"> Preia Recomandari </a> <br />
     <%= f.text_area :recomandari , :rows => 4 %>
   </div>
   <hr>
