@@ -1,4 +1,8 @@
 <% javascript 'evaluares.js.coffee' %>
+<%= javascript_tag do %>
+  evaluare ={};
+  evaluare = <%= @pacient.evaluares.select(:data).map(&:data).map{|data| data.to_time.to_i * 1000}.map{|iara| ["#{iara}".to_i, 4]}  %>;
+<% end %>
 <%= form_for([@pacient, @evaluare]) do |f| %>
   <% if @evaluare.errors.any? %>
     <div id="error_explanation">
@@ -29,6 +33,13 @@
   <hr>
   <h2> Aici campuri cu analize formular standard si adaugat din fosta evaluare </h2><hr>
   <h2> Analize standard sau cele de data trecuta </h2>
+  <h3> Aici grafic pentru analize</h3>
+  <div class="grafic" style="width: 560px; height: 300px;">
+  </div>
+  <hr>
+
+<div id="charts" style="width:560px;height:300px;"></div>
+
 
   
   <table>
@@ -36,7 +47,8 @@
       <th> Valoare anterioara</th>
       <th> Valoare </th>
       <th> Unitate de masura </th>
-      <th> Fizilogic maxim</th></tr>
+      <th> Fizilogic maxim</th>
+      <th> Grafic</th></tr>
   <% @evaluare.paraclinics.each_with_index do |paraclinic, index| %>
     <%= f.fields_for :paraclinics, paraclinic do |g| %>
       <tr><td><%= @analize_standard[index].nume %></td>
@@ -45,7 +57,8 @@
           <% end %></td>
       <td><%= g.text_field :valoare %></td>
       <td><%= @analize_standard[index].unitate_masura %></td>
-      <td><%= @analize_standard[index].valoare_maxima %></td></tr>
+      <td><%= @analize_standard[index].valoare_maxima %></td>
+      <td><a href="#" id="adauga_grafic"> Adauga la grafic </a></td></tr>
     <% end %>
   <% end %>
 </table>
