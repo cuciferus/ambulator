@@ -5,4 +5,6 @@ class Evaluare < ActiveRecord::Base
   validates :data, :presence => true
   has_many :paraclinics
   accepts_nested_attributes_for :paraclinics
+
+
 end

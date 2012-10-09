@@ -17,5 +17,25 @@ class Pacient < ActiveRecord::Base
     end
     @pacients
   end
+
+  def get_data_and_analiza(analiza)
+    evaluari = self.evaluares
+
+    #dati = evaluari.select(:data).map(&:data).map{|data| data.to_time.to_i * 1000}.map{|iara| ["#{iara}".to_i, 4]}
+    analize =[]
+    evaluari.each do |evaluare|
+      paraclinica = evaluare.paraclinics.where(:fel_analiza_id => analiza)
+      if paraclinica != []
+        analize << paraclinica
+      end
+    end
+    valoare = []
+    analize.each do |analiza|
+      if analiza != []
+        valoare << analiza.select(:valoare).map(&:valoare)
+      end
+    end
+    valoare
+  end
     
 end
