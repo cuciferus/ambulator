@@ -21,7 +21,9 @@
     <%= f.date_select :data %>
   </div>
   <div class="field">
-    <% unless @pacient.evaluares.last.diagnostice.nil? %>
+    <% if @pacient.evaluares.last.diagnostice == "" %>
+      <h2> La ultima evaluare pacientul nu are trecute diagnosicele<h2> || <h3> <a href="#"> Vezi diagnostice anterioare</a>
+          <% else %>
       <h2> Diagnostice cunoscute la data de <%= @pacient.evaluares.last.data %> </h2>
       <%= f.label @pacient.evaluares.last.diagnostice, :id=>"diagnostice_vechi" %>
     <% end %>
@@ -31,16 +33,14 @@
     <%= f.text_area :diagnostice, :rows => 4 %>
   </div>
   <hr>
-  <h2> Aici campuri cu analize formular standard si adaugat din fosta evaluare </h2><hr>
   <h2> Analize standard sau cele de data trecuta </h2>
   <h3> Aici grafic pentru analize</h3>
-  <div class="grafic" style="width: 560px; height: 300px;">
-  </div>
-  <hr>
 
 <div id="charts" style="width:560px;height:300px;"></div>
 
+  <hr>
 
+  <h2> Aici campuri cu analize formular standard si adaugat din fosta evaluare </h2><hr>
   
   <table>
     <tr><th>Tip analiza</th>
@@ -58,7 +58,7 @@
       <td><%= g.text_field :valoare %></td>
       <td><%= @analize_standard[index].unitate_masura %></td>
       <td><%= @analize_standard[index].valoare_maxima %></td>
-      <td><a href="#" id="adauga_grafic"> Adauga la grafic </a></td></tr>
+      <td><a href="#" class="adauga_grafic", data-message={<%= @pacient.get_data_and_analiza(@analize_standard[index].id).to_json %> }> Adauga la grafic </a></td></tr>
     <% end %>
   <% end %>
 </table>
