@@ -58,7 +58,7 @@
       <td><%= g.text_field :valoare %></td>
       <td><%= @analize_standard[index].unitate_masura %></td>
       <td><%= @analize_standard[index].valoare_maxima %></td>
-      <td><a href="#" class="adauga_grafic", data-message={<%= @pacient.get_data_and_analiza(@analize_standard[index].id).to_json %> }> Adauga la grafic </a></td></tr>
+      <td><a href="#" class="adauga_grafic", data-message=<%= @pacient.get_data_and_analiza(@analize_standard[index].id).to_json %> > Adauga la grafic </a></td></tr>
     <% end %>
   <% end %>
 </table>

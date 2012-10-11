@@ -31,7 +31,7 @@ class Pacient < ActiveRecord::Base
     valoare = []
     analize.each do |analiza|
       if analiza[0] != []
-        valoare << [analiza[0].select(:valoare).map(&:valoare)[0], analiza[1]]
+        valoare << [analiza[1], analiza[0].select(:valoare).map(&:valoare)[0] ]
       end
     end
     valoare

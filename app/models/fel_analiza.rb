@@ -11,8 +11,4 @@ class FelAnaliza < ActiveRecord::Base
       @fel_analizas = find(:all, :limit => 10)
     end
   end
-
-    
-
-
 end
