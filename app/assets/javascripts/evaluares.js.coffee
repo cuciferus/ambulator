@@ -16,15 +16,9 @@ jQuery ->
     return false
 
   $(".adauga_grafic").click ->
-    console.log [ $(this).data("message")]
-    console.log [evaluare]
-    options = {xaxis: { mode: "time", tickLength: 5, timeformat: "%y/%m/%d"},selection: { mode: "x"}}
+    options = {xaxis: { mode: "time", tickLength: 5, timeformat: "%y/%m/%d"},selection: { mode: "x"}, lines: {show: true}, points: {show: true }}
     $.plot($("#charts"), [ $(this).data("message") ], options)
     return false
 
 
-#test de flot
-  data = [evaluare]
-  options = {xaxis: { mode: "time", tickLength: 5, timeformat: "%y/%m/%d"},selection: { mode: "x"}}
-  $.plot($("#charts"),data, options)
 

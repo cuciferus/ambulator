@@ -1,8 +1,5 @@
 <% javascript 'evaluares.js.coffee' %>
-<%= javascript_tag do %>
-  evaluare ={};
-  evaluare = <%= @pacient.evaluares.select(:data).map(&:data).map{|data| data.to_time.to_i * 1000}.map{|iara| ["#{iara}".to_i, 4]}  %>;
-<% end %>
+
 <%= form_for([@pacient, @evaluare]) do |f| %>
   <% if @evaluare.errors.any? %>
     <div id="error_explanation">
@@ -48,7 +45,9 @@
       <th> Valoare </th>
       <th> Unitate de masura </th>
       <th> Fizilogic maxim</th>
-      <th> Grafic</th></tr>
+      <th> Grafic</th>
+      <th> Scor </th></tr>
+    
   <% @evaluare.paraclinics.each_with_index do |paraclinic, index| %>
     <%= f.fields_for :paraclinics, paraclinic do |g| %>
       <tr><td><%= @analize_standard[index].nume %></td>
@@ -58,7 +57,8 @@
       <td><%= g.text_field :valoare %></td>
       <td><%= @analize_standard[index].unitate_masura %></td>
       <td><%= @analize_standard[index].valoare_maxima %></td>
-      <td><a href="#" class="adauga_grafic", data-message=<%= @pacient.get_data_and_analiza(@analize_standard[index].id).to_json %> > Adauga la grafic </a></td></tr>
+      <td><a href="#" class="adauga_grafic", data-message=<%= @pacient.get_data_and_analiza(@analize_standard[index].id).to_json %> > Grafic analiza </a></td>
+      <td><a href="#" class="grafic_scor", data-message="salut" > Grafic scor </a></td></tr>
     <% end %>
   <% end %>
 </table>
@@ -80,5 +80,7 @@
     <%= f.submit 'adauga' %>
     <%= f.submit 'adauga si printeaza' %>
     <%= f.submit 'adauga, printeaza analize si reteta' %>
+    <h2> Buton temporar </h2>
+    <%= f.submit 'printeaza reteta' %>
   </div>
 <% end %>
