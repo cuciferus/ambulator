@@ -22,8 +22,8 @@
 
   <div class="field">
     
-    <%= collection_select(:drugs, :medicament_id, Drug.all, :id, :dci, :prompt =>"Alege o pastila") %>
-    <%= collection_select(:drugs, :medicament_id, Drug.all, :id, :nume, {:prompt =>"Ce fel"},  :id => 'nume_select' ) %>
+    <%= f.collection_select(:drugs,  Drug.all, :id, :dci, {:prompt =>"Alege o pastila"}, :id => 'dci_select') %>
+    <%= f.collection_select(:drugs,  Drug.all, :id, :nume, {:prompt =>"Ce fel"},  :id => 'nume_select' ) %>
     <%= link_to 'Adauga in reteta'%>
   </div>
   <table>
