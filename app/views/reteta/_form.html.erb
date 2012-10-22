@@ -22,9 +22,13 @@
 
   <div class="field">
     
-    <%= f.collection_select(:drugs,  Drug.all, :id, :dci, {:prompt =>"Alege o pastila"}, :id => 'dci_select') %>
-    <%= f.collection_select(:drugs,  Drug.all, :id, :nume, {:prompt =>"Ce fel"},  :id => 'nume_select' ) %>
-    <%= link_to 'Adauga in reteta'%>
+    <%# f.collection_select(:drugs,  Drug.all, :id, :dci, {:prompt =>"Alege o pastila"}, :id => 'dci_select') %>
+    <h3> Aici is line drugs </h3>
+    <%# f.grouped_collection_select(:drugs,  Drug.all, :dci, :nume, :id, :nume, {:prompt =>"Ce fel"},  :id => 'nume_select' ) %>
+    <%= f.fields_for :drugs do |builder| %>
+      <%= render 'drug_fields', f: builder %>
+    <% end %>
+    <%= link_to_add_fields 'Adauga in reteta', f, :drugs %>
   </div>
   <table>
     <th><tr> Medicament</tr>

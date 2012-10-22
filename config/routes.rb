@@ -16,6 +16,7 @@ Ambulator::Application.routes.draw do
   resources :pacients do 
     resources :reteta do
       resources :drugs_retetum
+      match 'reteta/update_dci_select/:id', :controller => 'reteta', :action => 'update_dci_select'
     end
     resources :evaluares do
       resources :paraclinics 

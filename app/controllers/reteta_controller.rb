@@ -1,4 +1,5 @@
 class RetetaController < ApplicationController
+  respond_to :html, :js
   # GET /reteta
   # GET /reteta.json
   def index
@@ -29,7 +30,7 @@ class RetetaController < ApplicationController
     medicamente = @retetum.drugs.build
 
     respond_to do |format|
-      format.js
+      format.js 
       format.html # new.html.erb
       format.json { render json: @retetum }
     end

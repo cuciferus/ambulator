@@ -1,4 +1,5 @@
 class Retetum < ActiveRecord::Base
+  attr_accessible :drugs_attributes
   belongs_to :retetar
   belongs_to :pacient
   attr_accessible :data

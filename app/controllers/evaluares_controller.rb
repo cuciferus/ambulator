@@ -1,4 +1,5 @@
 class EvaluaresController < ApplicationController
+  respond_to :html, :js
 
   def index
     @pacient = Pacient.find(params[:pacient_id])

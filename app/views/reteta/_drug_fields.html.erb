@@ -1,0 +1,6 @@
+<fieldset>
+  <%= f.label :dci, "DCI" %>
+  <%= f.collection_select :dci, Drug.all, :id, :dci %>
+  <%= link_to  "Sterge medicament din reteta", "#", class: "remove_fields" %>
+</fieldset>
+

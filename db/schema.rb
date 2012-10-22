@@ -11,12 +11,12 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120925200848) do
+ActiveRecord::Schema.define(:version => 20121012144740) do
 
   create_table "drugs", :force => true do |t|
     t.string   "nume"
     t.string   "dci"
-    t.float    "cantitate"
+    t.float    "doza"
     t.string   "cod"
     t.string   "diagnostic"
     t.datetime "created_at", :null => false
