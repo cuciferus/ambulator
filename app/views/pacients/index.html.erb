@@ -1,42 +1,15 @@
+<%= javascript_include_tag 'pacients.js.coffee' %>
 <h1 align=center>Lista pacientilor</h1>
 <hr>
 <h3> Cauta pacient </h3>
-<%= form_tag pacients_path, :method => 'get' do %>
+<%= form_tag pacients_path, :method => 'get', :id => "pacients_search" do %>
   <p> 
     <%= text_field_tag :search, params[:search] %>
     <%= submit_tag "Cauta Pacient", :name => nil %>
     </p>
 <% end %>
 <h3> tabel pacienti gasiti</h3><hr>
-
-
-<table>
-  <tr>
-    <th>Nume</th>
-    <th>Prenume</th>
-    <th>Cnp</th>
-    <th>Focad</th>
-    <th>Actiuni diverse</th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% for pacient in @pacients %>
-  <tr>
-    <td><%= pacient.nume.downcase.capitalize %></td>
-    <td><%= pacient.prenume.downcase.capitalize %></td>
-    <td><%= pacient.cnp %></td>
-    <td><%= pacient.focad %></td>
-    <td><%= link_to 'Editeaza datele pacientului', edit_pacient_path(pacient) %>|
-    <%= link_to 'Sterge', pacient, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-    <td><%= link_to 'Adauga Evaluare', new_pacient_evaluare_path(pacient), :remote => true %></td>
-    <td><%= link_to 'Vezi evaluari vechi', pacient_evaluares_url(pacient) %> </td>
-    <td><%= link_to 'prescrie reteta', new_pacient_retetum_path(pacient) %></td>
-    <td><%= link_to 'keto/aranesp' %></td>
-  </tr>
-<% end %>
-</table>
-
+<div id="pacients"> <%= render 'pacients' %></div>
 <br />
 <hr>
 <h3> Retete </h3>
