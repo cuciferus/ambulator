@@ -8,9 +8,9 @@ class Pacient < ActiveRecord::Base
     search = nil if search ==""
     if search
       if search.is_cnp?
-        @pacients = find(:all, :conditions => ['cnp = ?', search])
+        @pacients = where(:cnp => search)
       else
-        @pacients = find(:all, :conditions => ['nume like ?',"%#{search}"])
+        @pacients = where(:nume => search)
       end
     else
       @pacients = find(:all, :limit => 10)
