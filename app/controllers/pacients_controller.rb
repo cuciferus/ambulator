@@ -5,6 +5,7 @@ class PacientsController < ApplicationController
     @pacients = Pacient.search(params[:search])
 
     respond_to do |format|
+      format.js
       format.html # index.html.erb
       format.json { render json: @pacients }
     end
