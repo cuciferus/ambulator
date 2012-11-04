@@ -12,7 +12,7 @@
   <% end %>
 
   <div class="field">
-   <%= collection_select(:medic, :medic_id, Medic.all, :id, :nume) %>
+   <%= f.collection_select(:medic_id, Medic.all, :id, :nume) %>
   </div>
   <div class="field">
     <%= f.label :tip %><br />

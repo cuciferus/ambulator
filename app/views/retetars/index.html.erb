@@ -11,7 +11,7 @@
 
 <% @retetars.each do |retetar| %>
   <tr>
-    <td><%= retetar.medic %></td>
+    <td><%= retetar.medic.nume %></td>
     <td><%= retetar.tip %></td>
     <td><%= link_to 'Show', retetar %></td>
     <td><%= link_to 'Edit', edit_retetar_path(retetar) %></td>
