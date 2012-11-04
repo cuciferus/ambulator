@@ -1,14 +1,23 @@
+<h2> Detalii despre retetarul <%= @retetar.id %></h2>
 <p id="notice"><%= notice %></p>
 
 <p>
   <b>Medic:</b>
-  <%= @retetar.medic %>
+  <%= @retetar.medic.nume %>
 </p>
 
 <p>
   <b>Tip:</b>
   <%= @retetar.tip %>
-</p>
+  </p>
+  <p>
+  <b> Serie </b>
+  <%= @retetar.serie %>
+  </p>
+  <p>
+  <b> Nr prima reteta </b>
+  <%= @retetar.nr_prima_reteta %>
+  </p>
 
 
 <%= link_to 'Edit', edit_retetar_path(@retetar) %> |
