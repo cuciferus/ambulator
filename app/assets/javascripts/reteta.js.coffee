@@ -9,3 +9,8 @@ jQuery ->
     regexp = new RegExp($(this).data('id'), 'g')
     $(this).before($(this).data('fields').replace(regexp, time))
     event.preventDefault()
+
+  $("#retetum_retetar_id").change ->
+    $("#serie_reteta").text($(this).attr('value'))
+
+
