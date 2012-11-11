@@ -12,5 +12,9 @@ jQuery ->
 
   $("#retetum_retetar_id").change ->
     $("#serie_reteta").text($(this).attr('value'))
-
+    $(this).attr('value')
+    request = $.get("/retetars/4.json")
+    request.success (data) -> console.log data.tip
+    request.error (jqXHR, textStatus, errorThrown) -> "alert nu a mers bine textStatus"
+    
 
