@@ -1,4 +1,5 @@
 class RetetarsController < ApplicationController
+  respond_to :html, :js, :json
   # GET /retetars
   # GET /retetars.json
   def index
@@ -16,8 +17,9 @@ class RetetarsController < ApplicationController
     @retetar = Retetar.find(params[:id])
 
     respond_to do |format|
+      format.js
       format.html # show.html.erb
-      format.json { render json: @retetar }
+      format.json { render json: @retetar.to_json(:include => [:medic]) , content_type: 'text/json'}
     end
   end
 

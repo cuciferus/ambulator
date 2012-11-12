@@ -11,10 +11,9 @@ jQuery ->
     event.preventDefault()
 
   $("#retetum_retetar_id").change ->
-    $("#serie_reteta").text($(this).attr('value'))
-    $(this).attr('value')
-    request = $.get("/retetars/4.json")
-    request.success (data) -> console.log data.tip
+    id_retetar = $(this).attr('value')
+    request = $.get("/retetars/"+ id_retetar + ".json")
+    request.success (data) -> 
+      $("#serie_reteta").text(data.serie)
+      $("#medic_reteta").text(data.medic.nume + " " + data.medic.prenume)
     request.error (jqXHR, textStatus, errorThrown) -> "alert nu a mers bine textStatus"
-    
-

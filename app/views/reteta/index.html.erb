@@ -14,16 +14,16 @@
 <% @reteta.each do |retetum| %>
   <tr>
     <td><%= retetum.data %></td>
-    <td><%= retetum.medicamente %></td>
+    <td><%= retetum.drugs %></td>
     <td><%= retetum.retetar %></td>
     <td><%= retetum.pacient %></td>
-    <td><%= link_to 'Show', retetum %></td>
-    <td><%= link_to 'Edit', edit_retetum_path(retetum) %></td>
-    <td><%= link_to 'Destroy', retetum, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= link_to 'Show', pacient_retetum_path(retetum.pacient)%></td>
+    <td><%# link_to 'Edit', edit_retetum_path(retetum) %></td>
+    <td><%# link_to 'Destroy', retetum, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Retetum', new_retetum_path %>
+<%= link_to 'New Retetum' %>

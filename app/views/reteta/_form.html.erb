@@ -13,9 +13,10 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :data %><br />
+    <%= f.label :data, "Data cu care scrii reteta" %><br />
     <%= f.date_select :data %>
   </div>
+  <h3> Alege retetarul</h3>
   <div class="field">
     <%= f.collection_select :retetar_id, Retetar.all << Retetar.new(:tip => "sau adauga retetar nou"), :id, :tip_cu_medic,  :prompt =>"Alege retetaru pa care scrii reteta", :include_blank => false%>
   </div>
@@ -24,7 +25,7 @@
     <h2> Detalii de reteta nr serie/medic </h2>
     Serie reteta: <div id="serie_reteta">Nu ai selectat retetar </div> 
     Nr reteta: <%= f.text_field :serie %><br />
-    Medic Prescriptor: <br />
+    Medic Prescriptor:<div id="medic_reteta">Nu ai selectat retetar</div> <br />
      Nr de zile de prescriptie: 
     <%= f.radio_button :nr_zile, 30 %>
     <%= f.label :nr_zile, 30, :value => 30 %>
@@ -34,9 +35,7 @@
 
   <div class="field">
     
-    <%# f.collection_select(:drugs,  Drug.all, :id, :dci, {:prompt =>"Alege o pastila"}, :id => 'dci_select') %>
     <h3> Aici is line drugs </h3>
-    <%# f.grouped_collection_select(:drugs,  Drug.all, :dci, :nume, :id, :nume, {:prompt =>"Ce fel"},  :id => 'nume_select' ) %>
     <%= f.fields_for :drugs do |builder| %>
       <%= render 'drug_fields', f: builder %>
     <% end %>

@@ -80,4 +80,9 @@ class DrugsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def update_dci
+    drug = Drug.find(params[:id])
+    @nume = Drug.where(:dci => drug.dci).select(:nume)
+  end
 end
