@@ -60,7 +60,7 @@ namespace :db do
           Drug.delete_all
           desc "le adaug pe cele pa care le stiu io"
           Drug.create!(:nume => "Siofor", :dci => "Metformin", :doza => 500, :cod => "PN5C2 242", :diagnostic => "Diabet zaharat tip 2")
-          Drug.create!(:nume => "Siofor", :dci => "Metformin", :doza => 1000, :cod => "PN5C2 242", :diagnostic => "Diabet zaharat tip 2")
+          Drug.create!(:nume => "Glucophage", :dci => "Metformin", :doza => 1000, :cod => "PN5C2 242", :diagnostic => "Diabet zaharat tip 2")
           Drug.create!(:nume => "Diaprel", :dci => "Gliclazid", :doza => 60, :cod => "PN5C2 242", :diagnostic => "Diabet zaharat tip 2")
           Drug.create!(:nume => "Diaprel", :dci => "Gliclazid", :doza => 30, :cod => "PN5C2 242", :diagnostic => "Diabet zaharat tip 2")
           Drug.create!(:nume => "Amaryl", :dci => "Glimepirid", :doza => 3, :cod => "PN5C2 242", :diagnostic => "Diabet zaharat tip 2")
