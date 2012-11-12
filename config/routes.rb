@@ -8,6 +8,7 @@ Ambulator::Application.routes.draw do
 
 
 
+  get 'drugs/update_dci', :as => 'update_dci'
   resources :drugs 
 
   resources :medics do 
