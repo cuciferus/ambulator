@@ -2,14 +2,16 @@ Ambulator::Application.routes.draw do
 
 
 
-  resources :line_drugs
-
   resources :retetars
 
 
 
   get 'drugs/update_dci', :as => 'update_dci'
-  resources :drugs 
+  resources :drugs do
+    resources :drug_concentrations
+    resources :drug_comercials
+    resources :line_drugs
+  end
 
   resources :medics do 
     resources :hospitals

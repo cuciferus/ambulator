@@ -1,0 +1,25 @@
+<h1>Listing drug_concentrations</h1>
+
+<table>
+  <tr>
+    <th>Concentration</th>
+    <th>Drug</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @drug_concentrations.each do |drug_concentration| %>
+  <tr>
+    <td><%= drug_concentration.concentration %></td>
+    <td><%= drug_concentration.drug %></td>
+    <td><%= link_to 'Show', drug_concentration %></td>
+    <td><%= link_to 'Edit', edit_drug_concentration_path(drug_concentration) %></td>
+    <td><%= link_to 'Destroy', drug_concentration, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Drug concentration', new_drug_concentration_path %>

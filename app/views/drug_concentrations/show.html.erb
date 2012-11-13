@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Concentration:</b>
+  <%= @drug_concentration.concentration %>
+</p>
+
+<p>
+  <b>Drug:</b>
+  <%= @drug_concentration.drug %>
+</p>
+
+
+<%= link_to 'Edit', edit_drug_concentration_path(@drug_concentration) %> |
+<%= link_to 'Back', drug_concentrations_path %>
