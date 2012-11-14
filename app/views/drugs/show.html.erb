@@ -16,7 +16,14 @@
   <b>Diagnostic:</b>
   <%= @drug.diagnostic %>
 </p>
-
+<p>
+<b> Denumiri comerciale:</b>
+  <%= @drug.drug_comercials.pluck(:nume) %>
+  </p>
+  <p>
+  <b> Concentratii disponibile </b>
+  <%= @drug.drug_concentrations.pluck(:concentration) %>
+  </p>
 
 <%= link_to 'Edit', edit_drug_path(@drug) %> |
 <%= link_to 'Back', drugs_path %>

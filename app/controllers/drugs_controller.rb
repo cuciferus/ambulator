@@ -1,4 +1,5 @@
 class DrugsController < ApplicationController
+  respond_to :html, :js
   # GET /drugs
   # GET /drugs.json
   def index
@@ -25,6 +26,8 @@ class DrugsController < ApplicationController
   # GET /drugs/new.json
   def new
     @drug = Drug.new
+    @drug.concentrations.build
+    @drug.brand_names.build
 
     respond_to do |format|
       format.html # new.html.erb
