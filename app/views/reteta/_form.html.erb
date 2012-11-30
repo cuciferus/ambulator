@@ -18,6 +18,7 @@
   <h3> Alege retetarul</h3>
   <div class="field">
     <%= f.collection_select :retetar_id, Retetar.all << Retetar.new(:tip => "sau adauga retetar nou"), :id, :tip_cu_medic,  :prompt =>"Alege retetaru pa care scrii reteta", :include_blank => false%>
+    <%= link_to "Adauga retetar", new_retetar_path(:modal=>true), :data=>{:toggle=>"modal", :target => "#newRetetarModal"}, :remote => true %>
   </div>
 
   <div class="fieldset">
@@ -26,7 +27,7 @@
     Nr reteta: <%= f.text_field :serie %><br />
     Medic Prescriptor:<div id="medic_reteta">Nu ai selectat retetar</div> <br />
      Nr de zile de prescriptie: 
-    <%= f.radio_button :nr_zile, 30 %>
+     <%= f.radio_button :nr_zile, 30,:label=>"salut" %>
     <%= f.label :nr_zile, 30, :value => 30 %>
     <%= f.radio_button :nr_zile, 90, :checked => true %>
     <%= f.label :nr_zile, 90, :value => 90 %>
@@ -49,3 +50,18 @@
     <%= f.submit "Printeaza reteta" %>
   </div>
 <% end %>
+
+<div id="newRetetarModal" class="modal hide fade">
+  <button type="button" class="close" data-dismiss="modal">x</button>
+  <div class="page-header">
+    <h2> Retetar nou</h2>
+  </div>
+  <% @retetar = Retetar.new %>
+  <%= render :partial => '/retetars/form' %>
+  <div class="submit_link">
+    <%= f.submit "Adauga", class="alt_btn">
+    <%= submit_tag "Anuleaza" >
+  </div>
+</div>
+  
+

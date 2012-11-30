@@ -17,7 +17,7 @@ class RetetarsController < ApplicationController
     @retetar = Retetar.find(params[:id])
 
     respond_to do |format|
-      format.js
+      format.js {render}
       format.html # show.html.erb
       format.json { render json: @retetar.to_json(:include => [:medic]) , content_type: 'text/json'}
     end
@@ -42,11 +42,22 @@ class RetetarsController < ApplicationController
   # POST /retetars
   # POST /retetars.json
   def create
+    modal = false
+    if params.has_key?(:modal)
+      modal = true
+      params.delete(:modal)
+    end
     @retetar = Retetar.new(params[:retetar])
 
     respond_to do |format|
       if @retetar.save
-        format.html { redirect_to @retetar, notice: 'Retetar was successfully created.' }
+        format.js {render}
+        puts params
+        if modal
+          format.html
+        else
+          format.html { redirect_to @retetar, notice: 'Retetar was successfully created.' }
+        end
         format.json { render json: @retetar, status: :created, location: @retetar }
       else
         format.html { render action: "new" }

@@ -59,8 +59,10 @@ namespace :db do
           desc "acum sterg medicamentele"
           Drug.delete_all
           desc "le adaug pe cele pa care le stiu io"
-          Drug.create!(:dci => "Metformin", :cod => "PN5C2 242", :diagnostic => "Diabet zaharat tip 2", :drug_comercials_attributes => [{:nume => "Siofor"},{:nume => "Metfogamma"}, {:nume => "Glucophage"}],
-                      :drug_concentrations_attributes =>[{:concentration => "1000mg"}, {:concentration => "500mg"},{:concentration => "850mg"}])
+          Drug.create!(:dci => "Metformin", :cod => "PN5C2 242", :diagnostic => "Diabet zaharat tip 2", :brand_names_attributes => [{:name => "Siofor"},{:name => "Metfogamma"}, {:name => "Glucophage"}],
+                      :concentrations_attributes =>[{:concentration => "1000mg"}, {:concentration => "500mg"},{:concentration => "850mg"}])
+          Drug.create!(:dci => "Gliclazid", :cod => "PN5C2 242", :diagnostic => "Diabet zaharat tip 2", :brand_names_attributes =>{:name => "Diaprel MR"}, :concentrations_attributes =>
+                       [{:concetration => "30mg"}, {:concentration => "60mg"}])
           
         end
       end

@@ -25,11 +25,13 @@
     <%= f.label :diagnostic %><br />
     <%= f.text_field :diagnostic %>
   </div>
+  <h3> Concentratii definite </h3>
   <%= f.fields_for :concentrations do |builder| %>
     <%= render 'concentration_fields', f: builder %>
   <% end %>
   <%= link_to_add_fields "Adauga doza", f, :concentrations %><br />
-  <%= f.fields_for :brand_name do |builder| %>
+  <h3> Denumiri comerciale definite </h3>
+  <%= f.fields_for :brand_names do |builder| %>
     <%= render 'brand_name_fields', f: builder %>
   <% end %>
   <%= link_to_add_fields "Adauga denumire comerciala", f, :brand_names %>
