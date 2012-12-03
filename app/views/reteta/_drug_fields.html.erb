@@ -2,7 +2,7 @@
   <%= f.label :dci, "DCI" %>
   <%= f.collection_select :dci, Drug.order(:dci), :id, :dci, {:id => 'dci_select'} %>
   <%= f.label :nume, "Denumire comerciala" %>
-  <%= f.collection_select :nume, Drug.order(:nume), :id, :nume, {:id => 'nume_select'} %>
+  <%# f.collection_select :nume, Drug.order(:nume), :id, :nume, {:id => 'nume_select'} %>
   <%# TODO aici trebe returnat obiect numai %>
   <%= link_to  "Sterge medicament din reteta", "#", class: "remove_fields" %>
 </fieldset>

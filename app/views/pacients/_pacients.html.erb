@@ -1,28 +1,32 @@
-<table>
-  <tr>
-    <th>Nume</th>
-    <th>Prenume</th>
-    <th>Cnp</th>
-    <th>Focad</th>
-    <th>Actiuni diverse</th>
-    <th></th>
-    <th></th>
-  </tr>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Nume</th>
+      <th>Prenume</th>
+      <th>Cnp</th>
+      <th>Focad</th>
+      <th>Actiuni diverse</th>
+      <th>Evaluari</th>
+      <th>Retete</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% for pacient in @pacients %>
+      <tr>
+        <td><%= pacient.nume.downcase.capitalize %></td>
+        <td><%= pacient.prenume.downcase.capitalize %></td>
+        <td><%= pacient.cnp %></td>
+        <td><%= pacient.focad %></td>
+        <td><%= link_to 'Editeaza datele pacientului', edit_pacient_path(pacient), :class=>"btn btn-mini btn-warning" %>
+          <%= link_to 'Scoate din evidenta', pacient, method: :delete, data: { confirm: 'Are you sure?'}, :class=>"btn btn-mini btn-danger"  %></td>
+      <td><%= link_to 'Adauga Evaluare', new_pacient_evaluare_path(pacient), :remote => true , :class=> "btn btn-mini" %>
+        <%= link_to 'Vezi evaluari vechi', pacient_evaluares_url(pacient), :class=> "btn btn-mini btn-info"%> </td>
+      <td><%= link_to 'prescrie reteta', new_pacient_retetum_path(pacient), :class=> "btn btn-mini" %>
+        <%= link_to 'keto/aranesp' ,new_pacient_retetum_path(pacient) , :class=> "btn btn-mini"%></td>
+      </tr>
+    </tbody>
+  <% end %>
 
-<% for pacient in @pacients %>
-  <tr>
-    <td><%= pacient.nume.downcase.capitalize %></td>
-    <td><%= pacient.prenume.downcase.capitalize %></td>
-    <td><%= pacient.cnp %></td>
-    <td><%= pacient.focad %></td>
-    <td><%= link_to 'Editeaza datele pacientului', edit_pacient_path(pacient) %>|
-    <%= link_to 'Sterge', pacient, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-    <td><%= link_to 'Adauga Evaluare', new_pacient_evaluare_path(pacient), :remote => true %></td>
-    <td><%= link_to 'Vezi evaluari vechi', pacient_evaluares_url(pacient) %> </td>
-    <td><%= link_to 'prescrie reteta', new_pacient_retetum_path(pacient) %></td>
-    <td><%= link_to 'keto/aranesp' %></td>
-  </tr>
-<% end %>
 </table>
-
+<%= link_to 'Adauga pacient in evidenta', new_pacient_path, :class=>"btn btn-mini btn-info" %><br/>
 

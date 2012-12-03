@@ -8,8 +8,26 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
-<%= yield %>
+  <div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+      <div class="container">
+        <a class="btn btn-navbar" data-toggle="collapse" data-target=".navcollapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </a>
+        <a class="brand" href="#"> Ambulator Paulescu</a>
+        <div class="nav-collapse">
+          <ul class="nav">
+            <li><%= link_to "Inapoi la pacienti", pacients_path %></li>
+            <li><%= link_to "De inventat" %></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <%= yield %>
+  </div>
 
 </body>
 </html>
