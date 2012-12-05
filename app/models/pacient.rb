@@ -3,17 +3,18 @@ class Pacient < ActiveRecord::Base
   validates :cnp, :presence => true, :length =>{:is => 13, :wrong_length => "CNP are 13 cifre"}, :numericality => {:only_integer => true}
   has_many :evaluares#, :order => 'data ASC'
   accepts_nested_attributes_for :evaluares
+  scope :visible, where(:evidenta => true)
 
   def self.search(search)
     search = nil if search ==""
     if search
       if search.is_cnp?
-        @pacients = where(:cnp => search)
+        @pacients = Pacient.visible.where(:cnp => search)
       else
-        @pacients = where(:nume => search)
+        @pacients = Pacient.visible.where(:nume => search)
       end
     else
-      @pacients = find(:all, :limit => 10)
+      @pacients = Pacient.visible.find(:all, :limit => 10)
     end
     @pacients
   end

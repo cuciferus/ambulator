@@ -4,7 +4,7 @@
 <h3> Cauta pacient </h3>
 <%= form_tag pacients_path, :method => 'get', :id => "pacients_search", :html => {:class=>"form-search"} do %>
   <p> 
-  <%= text_field_tag :search, params[:search],:placeholder=>"Nume sau cnp", :class=>"input-medium search-query" %>
+  <%= text_field_tag :search, params[:search],:placeholder=>"Nume sau cnp", :class=>"input-large search-query" %>
     <%= submit_tag "Cauta Pacient", :name => nil, :class=>"btn" %>
     </p>
 <% end %>
