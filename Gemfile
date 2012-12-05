@@ -23,6 +23,7 @@ end
 
 gem 'jquery-rails'
 gem 'twitter-bootstrap-rails'
+gem 'bootstrap-datepicker-rails'
 gem 'less-rails'
 
 # To use ActiveModel has_secure_password

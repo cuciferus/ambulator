@@ -1,4 +1,5 @@
 jQuery ->
+  alert "plm"
   $('form').on 'click', '.remove_fields', (event) ->
     $(this).prev('input[type=hidden]').val('1')
     $(this).closest('fieldset').hide()
@@ -13,7 +14,7 @@ jQuery ->
   $("#retetum_retetar_id").change ->
     id_retetar = $(this).attr('value')
     request = $.get("/retetars/"+ id_retetar + ".json")
-    request.success (data) -> 
-      $("#serie_reteta").text(data.serie)
-      $("#medic_reteta").text(data.medic.nume + " " + data.medic.prenume)
+    request.success (data) ->
+      $("span#medic_reteta").text(data.medic.nume + " " + data.medic.prenume)
+      $("span#serie_reteta").text(data.serie)
     request.error (jqXHR, textStatus, errorThrown) -> "alert nu a mers bine textStatus"

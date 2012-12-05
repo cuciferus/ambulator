@@ -1,17 +1,8 @@
-<%if @pacient %>
-<%= form_for @pacient, :html => {:class => 'form-horizontal'} do |f| %>
-  <fieldset>
-  <% if @pacient.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@pacient.errors.count, "error") %> prohibited this pacient from being saved:</h2>
 
-      <ul>
-      <% @pacient.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+<div class="modal-body">
+<%= form_for Pacient.new,:remote=>true, :html => {"data-type"=> :json, :class => 'form-horizontal'} do |f| %>
+  <fieldset>
+
 
   <div class="control-group">
     <%= f.label :nume, :class=>'control-label' %>
@@ -49,10 +40,12 @@
     <%= f.text_field :focad,:class=>'text-field' %>
   </div>
 </div>
-  <div class="form-actions">
-    <%= f.submit nil, :class=>'btn btn-primary' %>
-    <%= link_to 'Anuleaza', pacients_path, :class=>'btn' %>
+</div>
+  <div class="modal-footer">
+    <%# f.submit nil, :class=>'btn btn-primary' %>
+    <button href="#" class="btn btn-primary">Save changes</button>
+    <a href="#" class="btn btn-success">Call to action</a> 
+    <a class="btn" data-dismiss="modal" href="#">Anuleaza</a>
   </div>
 </fieldset>
-<% end %>
 <% end %>

@@ -5,3 +5,5 @@ jQuery ->
   $("#pacients_search").submit ->
     $.get(this.action, $(this).serialize(), null, "script")
     return false
+  $("form.new_pacient").on "ajax:success", (event, data, status, xhr) ->
+    $("#newPacientModal").modal('hide')

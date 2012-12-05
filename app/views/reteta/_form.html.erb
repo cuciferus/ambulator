@@ -1,4 +1,5 @@
-<%= form_for([@pacient,@retetum]) do |f| %>
+<div class="row-fluid">
+  <%= form_for [@pacient,@retetum], :html =>{:class=>"form-horizontal"}  do |f| %>
   <fieldset>
   <% if @retetum.errors.any? %>
     <div id="error_explanation">
@@ -11,61 +12,54 @@
       </ul>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= f.label :data, "Data cu care scrii reteta" %><br />
-    <%= f.date_select :data %>
-  </div>
-  <h3> Alege retetarul</h3>
-  <div class="field">
-    <%= f.collection_select :retetar_id, Retetar.all << Retetar.new(:tip => "sau adauga retetar nou"), :id, :tip_cu_medic,  :prompt =>"Alege retetaru pa care scrii reteta", :include_blank => false%>
-    <%# link_to "Adauga retetar", new_retetar_path(:modal=>true), :data=>{:toggle=>"modal", :target => "#newRetetarModal"}, :remote => true %>
-    <a type="button" class="btn" style="width:100%;" href="#newRetetarModal2" data-toggle="modal"> Adauga Retetar</a>
+  <legend> Prescrie o noua reteta pentru <%= @pacient.nume%> <%= @pacient.prenume %></legend>
+  <div class="control-group">
+    <%= f.label :data, "Data cu care scrii reteta",:class=>"control-label" %>
+    <div class="input-append date" >
+      <%= f.text_field :data, :value=>Date.today.strftime('%m-%d-%Y'), :id=>"data-reteta" %>
+    </div>
   </div>
 
-    <h2> Detalii de reteta nr serie/medic </h2>
-    Serie reteta: <div id="serie_reteta">Nu ai selectat retetar </div> 
-    Nr reteta: <%= f.text_field :serie %><br />
-    Medic Prescriptor:<div id="medic_reteta">Nu ai selectat retetar</div> <br />
-     Nr de zile de prescriptie: 
-     <%= f.radio_button :nr_zile, 30,:label=>"salut", :wrapper_html => {:class=>'span6'} %>
-     <%= f.label :nr_zile, 30, :value => 30 , :wrapper_html => {:class=>'span6'}%>
-     <%= f.radio_button :nr_zile, 90, :checked => true , :wrapper_html => {:class=>'span6'}%>
-     <%= f.label :nr_zile, 90, :value => 90 , :wrapper_html => {:class=>'span6'}%>
-
-    
-    <h3> Aici is line drugs </h3>
-    <%= f.fields_for :drugs do |builder| %>
-      <%= render 'drug_fields', f: builder %>
-    <% end %>
-    <%= link_to_add_fields 'Adauga in reteta', f, :drugs %>
+  <div class="control-group">
+    <%= f.label :retetar_id, "Alege retetarul",:class=>"control-label" %>
+    <div class="controls">
+      <%= f.collection_select :retetar_id, Retetar.all << Retetar.new(:tip => "sau adauga retetar nou"), :id, :tip_cu_medic,  :prompt =>"Alege retetaru pa care scrii reteta", :include_blank => false%>
+    </div>
   </div>
-  <table>
-    <th><tr> Medicament</tr>
-      <tr>Cantitate</tr></th>
-      </table>
 
-  <div class="btn btn-primary">
-    <%= f.submit "Printeaza reteta" %>
+  <div class="control-group">
+    <p class="lead"> Detalii de reteta nr serie/medic </p>
+    <p >Medic Prescriptor:<span id="medic_reteta" class="text-info"> Nu ai selectat retetar </span>||
+    Serie reteta: <span id="serie_reteta" class="text-info">Nu ai selectat retetar </span> </p>
+    <br/>
+      <%= f.label :serie,"Nr reteta", :class=>"control-label" %>
+    <div class="controls">
+      <%= f.text_field :serie, :class=>"text-field" %><br />
+    </div>
   </div>
+
+  <div class="control-group">
+    <p class="control-label">Nr de zile de prescriptie: </p>
+     <%= f.radio_button :nr_zile, 30, :class=>'radio inline' %>
+     <%= f.label :nr_zile, 30, :value => 30, :class=>'radio inline'%>
+     <%= f.radio_button :nr_zile, 90, :checked => true , :class=>'radio inline'%>
+     <%= f.label :nr_zile, 90, :value => 90 , :class=>'radio inline'%>
+   </div>
+
+   <div class="control-group">
+     <legend> Aici is line drugs </legend>
+     <div class="control">
+        <%= f.fields_for :drugs do |builder| %>
+          <%= render 'drug_fields', f: builder %>
+        <% end %>
+        <%= link_to_add_fields 'Adauga in reteta', f, :drugs %>
+      </div>
+    </div>
+    <div class="form-actions">
+      <%= f.submit "Adauga si printeaza reteta", :class=>"btn btn-primary" %>
+      <%= link_to "Anuleaza", pacients_path, :class=>"btn" %>
+    </div>
+  </fieldset>
 <% end %>
-</fieldset>
-<div class="modal fade" id="newRetetarModal2">
-  <div class="modal-header">
-    <a class="close" data-dismiss="modal">&times;</a>
-    <h3> Formular pentru un nou retetar</h3>
-  </div>
-  <div class="modal-body">
-    <p> Aici formular pentru retetar nou</p>
-  </div>
-  <div class="modal-footer">
-    <a href="#" class="btn" data-dismiss="modal"> Anuleaza</a>
-    <a href="#" id="modal-form-submit" class="btn btn-primary"> Adauga retetaru</a>
-  </div>
 </div>
-<script>
-  $('modal-form-submit').on('click', function(e) {
-    e.preventDefault();
-    $.('#modal-form').submit();
-  });
-</script>
+
