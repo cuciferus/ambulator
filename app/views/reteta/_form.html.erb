@@ -19,6 +19,9 @@
       <%= f.text_field :data, :value=>Date.today.strftime('%m-%d-%Y'), :id=>"data-reteta" %>
     </div>
   </div>
+<div class='well'>
+    <input type="text" data-behaviour='datepicker' >
+</div>
 
   <div class="control-group">
     <%= f.label :retetar_id, "Alege retetarul",:class=>"control-label" %>

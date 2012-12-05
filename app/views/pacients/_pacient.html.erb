@@ -1,21 +1,15 @@
-<p>
-  <b>Nume:</b>
-  <%= @pacient.nume.capitalize %>
+<div class="well"><td>
+  <%= @pacient.nume.capitalize %></td>
 
-  <b>Prenume:</b>
-  <%= @pacient.prenume.capitalize %>
+<td><%= @pacient.prenume.capitalize %></td>
 
-  <b>Cnp:</b>
-  <%= @pacient.cnp %><br />
+<td>  <%= @pacient.cnp %><br /></td>
 
-  <b>Adresa:</b>
-  <%= @pacient.adresa %>
+<td>  Adresa:<%= @pacient.adresa %>
 
-  <b>Focad:</b>
-  <%= @pacient.focad %>
+  FoCAD:<%= @pacient.focad %>
 
-  <b>Debut diabet:</b>
-  <%= @pacient.debut_diabet %>
-</p>
-<%= link_to 'Schimba detalii ale pacientului', edit_pacient_path(@pacient), :class=>"btn btn-primary" %> 
-<%= link_to 'Scoate din evidenta', "#",:class =>"btn btn-danger"%>
+  Data debut Diabet:<%= @pacient.debut_diabet %></td>
+<td><%= link_to 'Schimba detalii ale pacientului', edit_pacient_path(@pacient), :class=>"btn btn-primary" %> 
+  <%= link_to 'Scoate din evidenta', "#",:class =>"btn btn-danger"%>
+  <%= link_to 'revino', pacients_path, :remote=>true, :class=>"btn btn-success" %></td></div>

@@ -1,1 +1,1 @@
-$("#detalii-pacient").html("<%= escape_javascript(render @pacient) %>");
+$("tr#<%= @pacient.cnp%>").replaceWith("<tr><%= escape_javascript(render @pacient) %></tr>");
