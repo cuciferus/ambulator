@@ -1,4 +1,3 @@
-<%if @pacient %>
 <%= form_for @pacient, :html => {:class => 'form-horizontal'} do |f| %>
   <fieldset>
   <% if @pacient.errors.any? %>
@@ -54,5 +53,4 @@
     <%= link_to 'Anuleaza', pacients_path, :class=>'btn' %>
   </div>
 </fieldset>
-<% end %>
 <% end %>

@@ -82,5 +82,13 @@ class PacientsController < ApplicationController
       format.json { head :no_content }
     end
   end
+  def scoatere_evidenta
+    @pacient = Pacient.find(params[:id])
+    @pacient.evidenta = false
+    respond_to do |format|
+      format.js
+    end
+  end
+
 end
 

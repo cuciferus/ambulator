@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Data:</b>
+  <%= @exit.data %>
+</p>
+
+<p>
+  <b>Motiv:</b>
+  <%= @exit.motiv %>
+</p>
+
+<p>
+  <b>Pacient:</b>
+  <%= @exit.pacient %>
+</p>
+
+
+<%= link_to 'Edit', edit_exit_path(@exit) %> |
+<%= link_to 'Back', exits_path %>
