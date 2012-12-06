@@ -25,7 +25,7 @@ class ExitsController < ApplicationController
   # GET /exits/new.json
   def new
     @pacient = Pacient.find(params[:pacient_id])
-    @exit = Exit.new
+    @exit = @pacient.build_exit
 
     respond_to do |format|
       format.html # new.html.erb
@@ -42,13 +42,13 @@ class ExitsController < ApplicationController
   # POST /exits.json
   def create
     @pacient = Pacient.find(params[:pacient_id])
-    @pacient.exit.create(params[:exit])
-    #@exit = Exit.new(params[:exit])
+    @exit = @pacient.create_exit(params[:exit])
 
     respond_to do |format|
       if @exit.save
-        format.html { redirect_to @exit, notice: 'Exit was successfully created.' }
-        format.json { render json: @exit, status: :created, location: @exit }
+        @pacient.update_attribute(:evidenta, false)
+        format.html { redirect_to pacients_path, notice: 'Pacientul a fost scos din evidenta' }
+        format.json { render json: @pacients, status: :created, location: @exit }
       else
         format.html { render action: "new" }
         format.json { render json: @exit.errors, status: :unprocessable_entity }

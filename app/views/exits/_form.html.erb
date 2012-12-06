@@ -1,4 +1,5 @@
-<%= form_for [@pacient, @exit], :class=>"form-horizontal" do |f| %>
+<%= form_for [@pacient, @exit], :html=>{:class=>"form-horizontal"} do |f| %>
+  <fieldset>
   <% if @exit.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@exit.errors.count, "error") %> prohibited this exit from being saved:</h2>
@@ -11,15 +12,20 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :data %><br />
-    <%= f.date_select :data %>
+  <div class="control-group">
+    <%= f.label :data,:class=>"control-label" %>
+    <div class="controls">
+      <%= f.date_select :data, :class=>"text-field" %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :motiv %><br />
-    <%= f.text_field :motiv %>
+  <div class="control-group">
+    <%= f.label :motiv,:class=>"control-label" %>
+    <div class="controls">
+      <%= f.text_field :motiv, :class=>"text-field" %>
+    </div>
   </div>
-  <div class="actions">
+  <div class="form-actions">
     <%= f.submit "Adauga motiv iesire", :class=>"btn btn-primary" %>
   </div>
+  </fieldset>
 <% end %>

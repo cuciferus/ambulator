@@ -1,5 +1,5 @@
-<h2> Adauga motiv iesire din evidenta pentru <%= @pacient.nume%> <%= @pacient.prenume%> cu cnp <%= @pacient.cnp%></h2>
+<legend> Adauga motiv iesire din evidenta pentru <%= @pacient.nume%> <%= @pacient.prenume%> cu cnp <%= @pacient.cnp%></legend>
 
 <%= render 'form' %>
 
-<%= link_to 'Back', exits_path %>
+<%= link_to 'Anuleaza', pacients_path, :class=>"btn" %>
