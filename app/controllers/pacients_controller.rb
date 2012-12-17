@@ -18,6 +18,7 @@ class PacientsController < ApplicationController
 
     respond_to do |format|
       format.html # show.html.erb
+      format.js
       format.json { render json: @pacient }
     end
   end
@@ -36,6 +37,10 @@ class PacientsController < ApplicationController
   # GET /pacients/1/edit
   def edit
     @pacient = Pacient.find(params[:id])
+    respond_to do |format|
+      format.js
+      format.html
+    end
   end
 
   # POST /pacients
