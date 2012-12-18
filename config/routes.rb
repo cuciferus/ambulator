@@ -2,6 +2,7 @@ Ambulator::Application.routes.draw do
 
 
 
+
   resources :brand_names
 
   #resources :concentrations
@@ -19,6 +20,7 @@ Ambulator::Application.routes.draw do
     resources :hospitals
   end
   resources :pacients do 
+    resources :iesires
     resources :reteta do
       resources :drugs_retetum
       match 'reteta/update_dci_select/:id', :controller => 'reteta', :action => 'update_dci_select'

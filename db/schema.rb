@@ -11,42 +11,33 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121114162252) do
+ActiveRecord::Schema.define(:version => 20121218130700) do
 
   create_table "brand_names", :force => true do |t|
     t.string   "name"
-    t.integer  "drug_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
 
   create_table "concentrations", :force => true do |t|
-    t.string   "concentration"
-    t.integer  "drug_id"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
+    t.integer  "concentration", :limit => 255
+    t.datetime "created_at",                   :null => false
+    t.datetime "updated_at",                   :null => false
+    t.integer  "si"
   end
-
-  add_index "concentrations", ["drug_id"], :name => "index_concentrations_on_drug_id"
 
   create_table "drugs", :force => true do |t|
     t.string   "dci"
     t.string   "cod"
     t.string   "diagnostic"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+    t.integer  "brand_name_id"
+    t.integer  "concentration_id"
   end
 
-  create_table "drugs_reteta", :force => true do |t|
-    t.integer  "retetum_id"
-    t.integer  "drug_id"
-    t.string   "cantitate"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
-  add_index "drugs_reteta", ["drug_id"], :name => "index_drugs_reteta_on_drug_id"
-  add_index "drugs_reteta", ["retetum_id"], :name => "index_drugs_reteta_on_retetum_id"
+  add_index "drugs", ["brand_name_id"], :name => "index_drugs_on_brand_name_id"
+  add_index "drugs", ["concentration_id"], :name => "index_drugs_on_concentration_id"
 
   create_table "evaluares", :force => true do |t|
     t.date     "data"
@@ -59,6 +50,16 @@ ActiveRecord::Schema.define(:version => 20121114162252) do
   end
 
   add_index "evaluares", ["pacient_id"], :name => "index_evaluares_on_pacient_id"
+
+  create_table "exits", :force => true do |t|
+    t.date     "data"
+    t.string   "motiv"
+    t.integer  "pacient_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "exits", ["pacient_id"], :name => "index_exits_on_pacient_id"
 
   create_table "fel_analizas", :force => true do |t|
     t.text     "nume",           :limit => 255
@@ -83,6 +84,16 @@ ActiveRecord::Schema.define(:version => 20121114162252) do
 
   add_index "hospitals", ["medic_id"], :name => "index_hospitals_on_medic_id"
 
+  create_table "iesires", :force => true do |t|
+    t.date     "data"
+    t.string   "motiv"
+    t.integer  "pacient_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "iesires", ["pacient_id"], :name => "index_iesires_on_pacient_id"
+
   create_table "line_drugs", :force => true do |t|
     t.integer  "cantitate"
     t.integer  "retetum_id"
@@ -105,12 +116,14 @@ ActiveRecord::Schema.define(:version => 20121114162252) do
   create_table "pacients", :force => true do |t|
     t.string   "nume"
     t.string   "prenume"
-    t.string   "cnp",          :null => false
+    t.string   "cnp",                            :null => false
     t.text     "adresa"
     t.date     "debut_diabet"
     t.string   "focad"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
+    t.datetime "created_at",                     :null => false
+    t.datetime "updated_at",                     :null => false
+    t.boolean  "evidenta",     :default => true
+    t.boolean  "active",       :default => true
   end
 
   create_table "paraclinics", :force => true do |t|

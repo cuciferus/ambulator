@@ -1,9 +1,10 @@
 <fieldset>
-  <%= f.label :dci, "DCI" %>
-  <%= f.collection_select :dci, Drug.order(:dci), :id, :dci, {:id => 'dci_select'} %>
-  <%= f.label :nume, "Denumire comerciala" %>
-  <%# f.collection_select :nume, Drug.order(:nume), :id, :nume, {:id => 'nume_select'} %>
-  <%# TODO aici trebe returnat obiect numai %>
+  <%= label :dci, "DCI" %>
+  <%= select_tag :dci_name, options_from_collection_for_select(Drug.all, 'id','dci') %>
+  <%= label :nume, "Denumire comerciala" %>
+  <%= select_tag :brand_name_name, options_from_collection_for_select(BrandName.all, 'id','name') %>
+  <%= label :concentratie, "Concentratia" %>
+  <%= select_tag :concentratie_name, options_from_collection_for_select(Concentration.all, 'id','concentratie_complet') %>
   <%= link_to  "Sterge medicament din reteta", "#", class: "remove_fields" %>
 </fieldset>
 

@@ -29,7 +29,7 @@
     <%= render 'concentration_fields', f: builder %>
   <% end %>
   <%= link_to_add_fields "Adauga doza", f, :concentrations %><br />
-  <%= f.fields_for :brand_name do |builder| %>
+  <%= f.fields_for :brand_names do |builder| %>
     <%= render 'brand_name_fields', f: builder %>
   <% end %>
   <%= link_to_add_fields "Adauga denumire comerciala", f, :brand_names %>

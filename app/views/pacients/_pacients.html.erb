@@ -1,12 +1,10 @@
-<table>
+<table border=1>
   <tr>
     <th>Nume</th>
     <th>Prenume</th>
     <th>Cnp</th>
     <th>Focad</th>
     <th>Actiuni diverse</th>
-    <th></th>
-    <th></th>
   </tr>
 
 <% for pacient in @pacients %>
@@ -15,10 +13,8 @@
     <td><%= pacient.prenume.downcase.capitalize %></td>
     <td><%= pacient.cnp %></td>
     <td><%= pacient.focad %></td>
-    <td><%= link_to 'Vezi detalii', pacient_path(pacient), :remote => true %>|
-    <%= link_to 'Sterge', pacient, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= link_to 'Vezi detalii', pacient_path(pacient), :remote => true %></td>
     <td><%= link_to 'Adauga Evaluare', new_pacient_evaluare_path(pacient), :remote => true %></td>
-    <td><%= link_to 'Vezi evaluari vechi', pacient_evaluares_url(pacient) %> </td>
     <td><%= link_to 'prescrie reteta', new_pacient_retetum_path(pacient) %></td>
   </tr>
 <% end %>

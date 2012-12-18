@@ -1,4 +1,5 @@
-<%= form_for([@pacient,@retetum]) do |f| %>
+  <%= form_for [@pacient,@retetum], :html =>{:class=>"form-horizontal"}  do |f| %>
+  <fieldset>
   <% if @retetum.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@retetum.errors.count, "error") %> prohibited this retetum from being saved:</h2>
@@ -10,42 +11,35 @@
       </ul>
     </div>
   <% end %>
+    <legend> Prescrie o noua reteta pentru <%= @pacient.nume%> <%= @pacient.prenume %></legend>
+    <%= f.label :data, "Data cu care scrii reteta" %>
+    <%= f.date_select :data  %><br>
 
-  <div class="field">
-    <%= f.label :data, "Data cu care scrii reteta" %><br />
-    <%= f.date_select :data %>
-  </div>
-  <h3> Alege retetarul</h3>
-  <div class="field">
+    <%= f.label :retetar_id, "Alege retetarul" %>
     <%= f.collection_select :retetar_id, Retetar.all << Retetar.new(:tip => "sau adauga retetar nou"), :id, :tip_cu_medic,  :prompt =>"Alege retetaru pa care scrii reteta", :include_blank => false%>
-  </div>
 
-  <div class="fieldset">
-    <h2> Detalii de reteta nr serie/medic </h2>
-    Serie reteta: <div id="serie_reteta">Nu ai selectat retetar </div> 
-    Nr reteta: <%= f.text_field :serie %><br />
-    Medic Prescriptor:<div id="medic_reteta">Nu ai selectat retetar</div> <br />
-     Nr de zile de prescriptie: 
-    <%= f.radio_button :nr_zile, 30 %>
-    <%= f.label :nr_zile, 30, :value => 30 %>
-    <%= f.radio_button :nr_zile, 90, :checked => true %>
-    <%= f.label :nr_zile, 90, :value => 90 %>
-      </div>
+    <p class="lead"> Detalii de reteta nr serie/medic </p>
+    <p >Medic Prescriptor:<span id="medic_reteta" class="text-info"> Nu ai selectat retetar </span>||
+    Serie reteta: <span id="serie_reteta" class="text-info">Nu ai selectat retetar </span> </p>
+    <br/>
+      <%= f.label :serie,"Nr reteta", :class=>"control-label" %>
+      <%= f.text_field :serie, :class=>"text-field" %><br />
 
-  <div class="field">
-    
-    <h3> Aici is line drugs </h3>
-    <%= f.fields_for :drugs do |builder| %>
-      <%= render 'drug_fields', f: builder %>
-    <% end %>
-    <%= link_to_add_fields 'Adauga in reteta', f, :drugs %>
-  </div>
-  <table>
-    <th><tr> Medicament</tr>
-      <tr>Cantitate</tr></th>
-      </table>
+    <p class="control-label">Nr de zile de prescriptie:
+     <%= f.radio_button :nr_zile, 30, :class=>'radio inline' %>
+     <%= f.label :nr_zile, 30, :value => 30, :class=>'radio inline'%>
+     <%= f.radio_button :nr_zile, 90, :checked => true , :class=>'radio inline'%>
+     <%= f.label :nr_zile, 90, :value => 90 , :class=>'radio inline'%></p>
 
-  <div class="actions">
-    <%= f.submit "Printeaza reteta" %>
-  </div>
+     Aici is line drugs 
+        <%= f.fields_for :drugs do |builder| %>
+          <%= render 'drug_fields', f: builder %>
+        <% end %>
+        <%= link_to_add_fields 'Adauga in reteta', f, :drugs %>
+    <div class="form-actions">
+      <%= f.submit "Adauga si printeaza reteta", :class=>"btn btn-primary" %>
+      <%= link_to "Anuleaza", pacients_path, :class=>"btn" %>
+    </div>
+  </fieldset>
 <% end %>
+
