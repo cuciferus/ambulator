@@ -1,4 +1,4 @@
-<h1>Listing reteta</h1>
+<h1>Iata retetele  pentru <%= @pacient.nume %></h1>
 
 <table>
   <tr>
@@ -11,13 +11,13 @@
     <th></th>
   </tr>
 
-<% @reteta.each do |retetum| %>
+<% @pacient.reteta.each do |retetum| %>
   <tr>
     <td><%= retetum.data %></td>
     <td><%= retetum.drugs %></td>
     <td><%= retetum.retetar %></td>
     <td><%= retetum.pacient %></td>
-    <td><%= link_to 'Show', pacient_retetum_path(retetum.pacient)%, :remote=>true %></td>
+    <td><%= link_to 'Show', pacient_reteta_path(@pacient), :remote=>true %></td>
     <td><%# link_to 'Edit', edit_retetum_path(retetum) %></td>
     <td><%# link_to 'Destroy', retetum, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
@@ -26,4 +26,4 @@
 
 <br />
 
-<%= link_to 'New Retetum' %>
+<%= link_to 'Mai prescrie o reteta', new_pacient_retetum_path(@pacient) %>

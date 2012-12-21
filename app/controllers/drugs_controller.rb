@@ -1,5 +1,5 @@
 class DrugsController < ApplicationController
-  respond_to :html, :js
+  respond_to :html, :js, :json
   # GET /drugs
   # GET /drugs.json
   def index
@@ -26,8 +26,8 @@ class DrugsController < ApplicationController
   # GET /drugs/new.json
   def new
     @drug = Drug.new
-    @drug.concentrations.build
-    @drug.brand_names.build
+    #@drug.concentrations.build
+    #@drug.brand_names.build
 
     respond_to do |format|
       format.html # new.html.erb
@@ -84,8 +84,12 @@ class DrugsController < ApplicationController
     end
   end
 
-  def update_dci
+  def find_by_dci
     drug = Drug.find(params[:id])
-    @nume = Drug.where(:dci => drug.dci).select(:nume)
+    @nume = Drug.where(:dci => drug.dci)
+    respond_to do |format|
+      format.html
+      format.json { render json: @nume}
+    end
   end
 end

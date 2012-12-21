@@ -1,4 +1,4 @@
-  <%= form_for [@pacient,@retetum], :html =>{:class=>"form-horizontal"}  do |f| %>
+  <%= form_for [@pacient,@retetum]  do |f| %>
   <fieldset>
   <% if @retetum.errors.any? %>
     <div id="error_explanation">
@@ -30,6 +30,7 @@
      <%= f.label :nr_zile, 30, :value => 30, :class=>'radio inline'%>
      <%= f.radio_button :nr_zile, 90, :checked => true , :class=>'radio inline'%>
      <%= f.label :nr_zile, 90, :value => 90 , :class=>'radio inline'%></p>
+     <legend> Medicamente adaugate in reteta </legend>
 
      Aici is line drugs 
         <%= f.fields_for :drugs do |builder| %>

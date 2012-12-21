@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121218130700) do
+ActiveRecord::Schema.define(:version => 20121218152444) do
 
   create_table "brand_names", :force => true do |t|
     t.string   "name"
@@ -30,14 +30,12 @@ ActiveRecord::Schema.define(:version => 20121218130700) do
     t.string   "dci"
     t.string   "cod"
     t.string   "diagnostic"
-    t.datetime "created_at",       :null => false
-    t.datetime "updated_at",       :null => false
-    t.integer  "brand_name_id"
-    t.integer  "concentration_id"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+    t.string   "brand_name"
+    t.float    "concentration"
+    t.string   "si"
   end
-
-  add_index "drugs", ["brand_name_id"], :name => "index_drugs_on_brand_name_id"
-  add_index "drugs", ["concentration_id"], :name => "index_drugs_on_concentration_id"
 
   create_table "evaluares", :force => true do |t|
     t.date     "data"
