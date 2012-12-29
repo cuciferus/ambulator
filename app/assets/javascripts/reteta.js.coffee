@@ -24,8 +24,14 @@ jQuery ->
     request.success (data) ->
       $("#brand_name_name").empty()
       $("#concentration_name").empty()
+      brand_names=[]
+      concentratii=[]
       for nume in data
-        $("#brand_name_name").append(new Option(nume.brand_name, "valoare"))
-        $("#concentration_name").append(new Option(nume.concentration, "valoare"))
+        unless nume.brand_name in brand_names
+          brand_names.push(nume.brand_name)
+          $("#brand_name_name").append(new Option(nume.brand_name, "valoare")) #filtrat pa unice
+        unless nume.concentration in concentratii
+          concentratii.push(nume.concentration)
+          $("#concentration_name").append(new Option((nume.concentration+" "+nume.si), "valoare"))
     request.error (jqXHR, textStatus, errorThrown) -> "alert nu a mers bine textStatus"
 
