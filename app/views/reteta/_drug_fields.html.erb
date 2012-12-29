@@ -1,6 +1,7 @@
 <fieldset>
   <%= label :dci, "DCI" %>
-  <%= select_tag :dci_name, options_from_collection_for_select(Drug.all, 'id','dci') %>
+  <%# select_tag :dci_name, options_from_collection_for_select(Drug.all, 'id','dci') %>
+  <%= select_tag :dci_name, options_for_select(Drug.uniq.pluck(:dci)) %>
   <%= label :nume, "Denumire comerciala" %>
   <select id="brand_name_name">
     <option value="1"> </option>

@@ -6,4 +6,8 @@ class Drug < ActiveRecord::Base
   has_many :brand_names
   accepts_nested_attributes_for :concentrations
   accepts_nested_attributes_for :brand_names
-end
+  def dci_uniq
+    self.select(:dci =>"dci")
+  end
+
+ end
