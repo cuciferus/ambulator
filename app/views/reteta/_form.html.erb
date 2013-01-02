@@ -12,8 +12,9 @@
     </div>
   <% end %>
     <legend> Prescrie o noua reteta pentru <%= @pacient.nume%> <%= @pacient.prenume %></legend>
-    <%= f.label :data, "Data cu care scrii reteta" %>
-    <%= f.date_select :data  %><br>
+    <%= f.label :data, "Data cu care scrii reteta" %><button id='last_monday' type="button">Ultima luni</button>
+    <%= f.text_field :data  %>
+    <button id="next_monday" type="button">Urmatoarea luni</button><br>
 
     <%= f.label :retetar_id, "Alege retetarul" %>
     <%= f.collection_select :retetar_id, Retetar.all << Retetar.new(:tip => "sau adauga retetar nou"), :id, :tip_cu_medic,  :prompt =>"Alege retetaru pa care scrii reteta", :include_blank => false%>
@@ -30,6 +31,8 @@
      <%= f.label :nr_zile, 30, :value => 30, :class=>'radio inline'%>
      <%= f.radio_button :nr_zile, 90, :checked => true , :class=>'radio inline'%>
      <%= f.label :nr_zile, 90, :value => 90 , :class=>'radio inline'%></p>
+     <strong > Diagnostic reteta</strong>
+      <span id="diagnostice_reteta">Alege medicament pentru diagnostic</span>
      <legend> Medicamente adaugate in reteta </legend>
 
      Aici is line drugs 

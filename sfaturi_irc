@@ -1,0 +1,1 @@
+ helen_: your filter would be something like Drug.where('chemical_id = ?', selected_chemical.id) followed by Drug.where('chemical_id = ? AND concentration_id = ?', selected_chemical.id, selected_concentration.id)

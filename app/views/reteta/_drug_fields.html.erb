@@ -1,16 +1,18 @@
 <fieldset>
   <%= label :dci, "DCI" %>
-  <%# select_tag :dci_name, options_from_collection_for_select(Drug.all, 'id','dci') %>
-  <%= select_tag :dci_name, options_for_select(Drug.uniq.pluck(:dci)) %>
+  <%= select_tag :dci_name, options_for_select(Drug.uniq.pluck(:dci)),:prompt =>"alege" %>
   <%= label :nume, "Denumire comerciala" %>
   <select id="brand_name_name">
-    <option value="1"> </option>
   </select>
   <%= label :concentratie, "Concentratia" %>
   <%# select_tag :concentratie_name, options_from_collection_for_select(Drug.all, 'id','concentration', :include_blank => false) %>
   <select id="concentration_name">
-    <option value="1"> </option>
   </select>
-  <%= link_to  "Sterge medicament din reteta", "#", class: "remove_fields" %>
+  <%= label :doza_zilnica, "Doza zilnica" %>
+  <%= number_field_tag(:doza) %>
+  <span id="cod_reteta">Alege dci</span>
+  <%# link_to  "Sterge medicament din reteta", "#", class: "remove_fields" %>
+  <span id="total_medicament">Total</span>
+  <%= link_to "Adauga","#",class: "add_line_drug" %>
 </fieldset>
 

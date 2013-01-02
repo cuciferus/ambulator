@@ -1,0 +1,27 @@
+<h1>Listing iesires</h1>
+
+<table>
+  <tr>
+    <th>Data</th>
+    <th>Motiv</th>
+    <th>Pacient</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @iesires.each do |iesire| %>
+  <tr>
+    <td><%= iesire.data %></td>
+    <td><%= iesire.motiv %></td>
+    <td><%= iesire.pacient %></td>
+    <td><%= link_to 'Show', iesire %></td>
+    <td><%= link_to 'Edit', edit_iesire_path(iesire) %></td>
+    <td><%= link_to 'Destroy', iesire, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Iesire', new_iesire_path %>
