@@ -8,6 +8,11 @@ jQuery ->
     else
       ultima_luni = new Date(azi.getTime() - (azi.getDay()-1)*3600*24*1000)
     $("#retetum_data").val(ultima_luni.getFullYear()+"-"+(ultima_luni.getMonth()+1)+"-"+ultima_luni.getDate())
+  $("#doza").on 'keyup change click',  ->
+    $("#total_medicament").text("Total "+$("#doza").val()*30)
+    console.log($("#doza").val())
+
+    
 
   $("#next_monday").click ->
     azi = new Date()
