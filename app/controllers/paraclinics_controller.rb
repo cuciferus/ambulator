@@ -1,9 +1,11 @@
 class ParaclinicsController < ApplicationController
+  respond_to :html, :js
   def index
     @pacient = Pacient.find(params[:pacient_id])
     @evaluares = @pacient.evaluares
 
     respond_to do |format|
+      format.js
       format.html # index.html.erb
     end
   end

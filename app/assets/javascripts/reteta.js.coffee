@@ -62,5 +62,3 @@ jQuery ->
           concentratii.push(nume.concentration)
           $("#concentration_name").append(new Option((nume.concentration+" "+nume.si), nume.id))
     request.error (jqXHR, textStatus, errorThrown) -> "alert nu a mers bine textStatus"
-
-
