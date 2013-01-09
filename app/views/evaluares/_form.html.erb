@@ -17,6 +17,10 @@
     <%= f.text_field :data, :value => Time.now.strftime("%Y/%m/%d") %>
   </div>
   <div class="field">
+    <%= f.label :nr_fo, "Numar de registru" %>
+    <%= f.text_field :nr_fo %>
+  </div>
+  <div class="field">
     <% if @pacient.evaluares.last.diagnostice == "" %>
       <h2> La ultima evaluare pacientul nu are trecute diagnosicele<h2> || <h3> <a href="#"> Vezi diagnostice anterioare</a>
           <% else %>

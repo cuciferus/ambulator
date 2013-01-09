@@ -27,20 +27,22 @@ class Pacient < ActiveRecord::Base
   def get_data_and_analiza(analiza)
     evaluari = self.evaluares
     analize =[]
+    fel_analiza = FelAnaliza.find(analiza)
     evaluari.each do |evaluare|
       paraclinica = evaluare.paraclinics.where(:fel_analiza_id => analiza)
-      data = evaluare.data.to_time.to_i * 1000
+      data = evaluare.data
       if paraclinica != []
         analize << [paraclinica, data]
       end
     end
-    valoare = []
+    valoare =[]
     analize.each do |analiza|
-      if analiza[0] != []
-        valoare << [analiza[1], analiza[0].select(:valoare).map(&:valoare)[0] ]
+      if analiza[0] !=[]
+        valoare << {:data => analiza[1], :valoare => analiza[0].select(:valoare).map(&:valoare)[0] }
       end
     end
-    valoare
+    final ={:valori=> valoare, :unitate_de_masura =>fel_analiza.unitate_masura,:nume_analiza=>fel_analiza.nume.gsub(" ","_")}
   end
 
 end
+
