@@ -18,13 +18,12 @@ jQuery ->
     if $("#charts").length
       $("#titlu_grafic").remove()
       $("#charts").remove()
-      $("#inchide_div").remove()
       return false
     $(this).closest("tr").after ->
       "<tr><td colspan='7'><div id='charts'>Salut</div></td></tr>"
     $("#charts").width(560)
     datele = $(this).data("message")
-    $("#charts").replaceWith("<div id='titlu_grafic'></div><div id='charts'></div><div id='inchide_div'><button type='button' id='inchide'>Inchide grafic</button></div>")
+    $("#charts").replaceWith("<div id='titlu_grafic'></div><div id='charts'></div>")
     $("#charts").animate {height:"300px","fast"} , ->
       $("#titlu_grafic").empty().append("Graficul analizei X")
       Morris.Line
@@ -41,6 +40,5 @@ jQuery ->
        opacity:"0" , ->
       $("#charts").parent("tr:first").remove()
       $("#titlu_grafic").remove()
-      $("#inchide_div").remove()
 
 
