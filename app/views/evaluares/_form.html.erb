@@ -1,6 +1,5 @@
-<% javascript 'evaluares.js.coffee' %>
-
 <%= form_for([@pacient, @evaluare]) do |f| %>
+  <fieldset>
   <% if @evaluare.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@evaluare.errors.count, "error") %> prohibited this evaluare from being saved:</h2>
@@ -14,30 +13,31 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :data %><br />
-    <%= f.date_select :data %>
+    <%= f.label :data,"Data evaluarii"  %>
+    <%= f.text_field :data, :value => Time.now.strftime("%Y/%m/%d") %>
+  </div>
+  <div class="field">
+    <%= f.label :nr_fo, "Numar de registru" %>
+    <%= f.text_field :nr_fo %>
   </div>
   <div class="field">
     <% if @pacient.evaluares.last.diagnostice == "" %>
       <h2> La ultima evaluare pacientul nu are trecute diagnosicele<h2> || <h3> <a href="#"> Vezi diagnostice anterioare</a>
           <% else %>
-      <h2> Diagnostice cunoscute la data de <%= @pacient.evaluares.last.data %> </h2>
-      <%= f.label @pacient.evaluares.last.diagnostice, :id=>"diagnostice_vechi" %>
+      <h2> Diagnostice cunoscute la data de <%= @pacient.evaluares.last.data %>: </h2>
+      <%= f.label @pacient.evaluares.last.diagnostice, :id=>"diagnostice_vechi" %>  | <a href="#" id="preluare_diagnostice" > Preia Diagnostice</a>
     <% end %>
   </div>
   <div class="field">
-    <%= f.label :diagnostice %>   | <a href="#" id="preluare_diagnostice" > Preia Diagnostice</a>
+    <%= f.label :diagnostice, "Diagnosticele evaluarii actuale" %> <br/>
     <%= f.text_area :diagnostice, :rows => 4 %>
   </div>
-  <hr>
   <h2> Analize standard sau cele de data trecuta </h2>
-  <h3> Aici grafic pentru analize</h3>
 
-<div id="charts" style="width:560px;height:300px;"></div>
 
   <hr>
 
-  <h2> Aici campuri cu analize formular standard si adaugat din fosta evaluare </h2><hr>
+  <h2> Analize standard </h2>
   
   <table>
     <tr><th>Tip analiza</th>
@@ -57,8 +57,10 @@
       <td><%= g.text_field :valoare %></td>
       <td><%= @analize_standard[index].unitate_masura %></td>
       <td><%= @analize_standard[index].valoare_maxima %></td>
-      <td><a href="#" class="adauga_grafic", data-message=<%= @pacient.get_data_and_analiza(@analize_standard[index].id).to_json %> > Grafic analiza </a></td>
-      <td><a href="#" class="grafic_scor", data-message="salut" > Grafic scor </a></td></tr>
+      <td><a href="#" class="adauga_grafic", data-message=<%= @pacient.get_data_and_analiza(@analize_standard[index].id).to_json %> > Grafic analiza </a></td> 
+      <!-- <td id= <%= @analize_standard[index].nume %>> <%= link_to 'Grafic_analiza', fel_analiza_paraclinics_path(@analize_standard[index],:pacient_id =>@pacient), :remote =>true  %></td> -->
+      <td><a href="#" class="grafic_scor", data-message="salut" > Grafic scor </a></td>
+    </tr>
     <% end %>
   <% end %>
 </table>
@@ -85,4 +87,5 @@
     <h2> Buton temporar </h2>
     <%= f.submit 'printeaza reteta' %>
   </div>
+</fieldset>
 <% end %>

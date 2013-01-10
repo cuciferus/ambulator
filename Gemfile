@@ -22,9 +22,7 @@ group :assets do
 end
 
 gem 'jquery-rails'
-gem 'twitter-bootstrap-rails'
-gem 'bootstrap-datepicker-rails'
-gem 'less-rails'
+gem 'jquery-ui-rails'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

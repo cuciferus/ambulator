@@ -1,6 +1,6 @@
-<div class="page-header">
-  Schimba datele lui <%= @pacient.nume.capitalize%> cu cnp <%= @pacient.cnp%>
-</div>
+<h1>Schimba datele lui <%= @pacient.nume.capitalize%> cu cnp <%= @pacient.cnp%></h1>
 
 <%= render 'form' %>
 
+<%= link_to 'Show', @pacient %> |
+<%= link_to 'Back', pacients_path %>

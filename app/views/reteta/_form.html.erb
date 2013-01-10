@@ -1,5 +1,4 @@
-<div class="row-fluid">
-  <%= form_for [@pacient,@retetum], :html =>{:class=>"form-horizontal"}  do |f| %>
+  <%= form_for [@pacient,@retetum]  do |f| %>
   <fieldset>
   <% if @retetum.errors.any? %>
     <div id="error_explanation">
@@ -12,57 +11,39 @@
       </ul>
     </div>
   <% end %>
-  <legend> Prescrie o noua reteta pentru <%= @pacient.nume%> <%= @pacient.prenume %></legend>
-  <div class="control-group">
-    <%= f.label :data, "Data cu care scrii reteta",:class=>"control-label" %>
-    <div class="input-append date" >
-      <%= f.text_field :data, :value=>Date.today.strftime('%m-%d-%Y'), :id=>"data-reteta" %>
-    </div>
-  </div>
-<div class='well'>
-    <input type="text" data-behaviour='datepicker' >
-</div>
+    <legend> Prescrie o noua reteta pentru <%= @pacient.nume%> <%= @pacient.prenume %></legend>
+    <%= f.label :data, "Data cu care scrii reteta" %><button id='last_monday' type="button">Ultima luni</button>
+    <%= f.text_field :data  %>
+    <button id="next_monday" type="button">Urmatoarea luni</button><br>
 
-  <div class="control-group">
-    <%= f.label :retetar_id, "Alege retetarul",:class=>"control-label" %>
-    <div class="controls">
-      <%= f.collection_select :retetar_id, Retetar.all << Retetar.new(:tip => "sau adauga retetar nou"), :id, :tip_cu_medic,  :prompt =>"Alege retetaru pa care scrii reteta", :include_blank => false%>
-    </div>
-  </div>
+    <%= f.label :retetar_id, "Alege retetarul" %>
+    <%= f.collection_select :retetar_id, Retetar.all << Retetar.new(:tip => "sau adauga retetar nou"), :id, :tip_cu_medic,  :prompt =>"Alege retetaru pa care scrii reteta", :include_blank => false%>
 
-  <div class="control-group">
     <p class="lead"> Detalii de reteta nr serie/medic </p>
     <p >Medic Prescriptor:<span id="medic_reteta" class="text-info"> Nu ai selectat retetar </span>||
     Serie reteta: <span id="serie_reteta" class="text-info">Nu ai selectat retetar </span> </p>
     <br/>
       <%= f.label :serie,"Nr reteta", :class=>"control-label" %>
-    <div class="controls">
       <%= f.text_field :serie, :class=>"text-field" %><br />
-    </div>
-  </div>
 
-  <div class="control-group">
-    <p class="control-label">Nr de zile de prescriptie: </p>
+    <p class="control-label">Nr de zile de prescriptie:
      <%= f.radio_button :nr_zile, 30, :class=>'radio inline' %>
      <%= f.label :nr_zile, 30, :value => 30, :class=>'radio inline'%>
      <%= f.radio_button :nr_zile, 90, :checked => true , :class=>'radio inline'%>
-     <%= f.label :nr_zile, 90, :value => 90 , :class=>'radio inline'%>
-   </div>
+     <%= f.label :nr_zile, 90, :value => 90 , :class=>'radio inline'%></p>
+     <strong > Diagnostic reteta</strong>
+      <span id="diagnostice_reteta">Alege medicament pentru diagnostic</span>
+     <legend> Medicamente adaugate in reteta </legend>
 
-   <div class="control-group">
-     <legend> Aici is line drugs </legend>
-     <div class="control">
+     Aici is line drugs 
         <%= f.fields_for :drugs do |builder| %>
           <%= render 'drug_fields', f: builder %>
         <% end %>
         <%= link_to_add_fields 'Adauga in reteta', f, :drugs %>
-      </div>
-    </div>
     <div class="form-actions">
       <%= f.submit "Adauga si printeaza reteta", :class=>"btn btn-primary" %>
       <%= link_to "Anuleaza", pacients_path, :class=>"btn" %>
     </div>
   </fieldset>
 <% end %>
-</div>
 

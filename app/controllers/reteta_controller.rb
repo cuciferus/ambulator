@@ -3,6 +3,7 @@ class RetetaController < ApplicationController
   # GET /reteta
   # GET /reteta.json
   def index
+    @pacient = Pacient.find(params[:pacient_id])
     @reteta = Retetum.all
 
     respond_to do |format|
@@ -44,12 +45,13 @@ class RetetaController < ApplicationController
   # POST /reteta
   # POST /reteta.json
   def create
-    @retetum = Retetum.new(params[:retetum])
+    @pacient = Pacient.find(params[:pacient_id])
+    @retetum = @pacient.reteta.create(params[:retetum])
 
     respond_to do |format|
       if @retetum.save
         format.js
-        format.html { redirect_to @retetum, notice: 'Retetum was successfully created.' }
+        format.html { redirect_to pacient_reteta_path(@pacient), notice: 'Retetum was successfully created.' }
         format.json { render json: @retetum, status: :created, location: @retetum }
       else
         format.js

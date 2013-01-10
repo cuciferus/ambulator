@@ -18,11 +18,11 @@
 </p>
 <p>
 <b> Denumiri comerciale:</b>
-  <%= @drug.brand_names.pluck(:name) %>
+<%= @drug.brand_name %>
   </p>
   <p>
   <b> Concentratii disponibile </b>
-  <%= @drug.concentrations.pluck(:concentration) %>
+  <%= @drug.concentration %>
   </p>
 
 <%= link_to 'Edit', edit_drug_path(@drug) %> |

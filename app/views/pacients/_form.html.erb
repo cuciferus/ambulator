@@ -1,5 +1,4 @@
-<%= form_for @pacient, :html => {:class => 'form-horizontal'} do |f| %>
-  <fieldset>
+<%= form_for(@pacient) do |f| %>
   <% if @pacient.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@pacient.errors.count, "error") %> prohibited this pacient from being saved:</h2>
@@ -12,45 +11,31 @@
     </div>
   <% end %>
 
-  <div class="control-group">
-    <%= f.label :nume, :class=>'control-label' %>
-    <div class="controls">
-    <%= f.text_field :nume,:class=>'text-field' %>
+  <div class="field">
+    <%= f.label :nume %><br />
+    <%= f.text_field :nume %>
   </div>
-</div>
-  <div class="control-group">
-    <%= f.label :prenume, :class=>'control-label' %>
-    <div class="controls">
-    <%= f.text_field :prenume,:class=>'text-field' %>
+  <div class="field">
+    <%= f.label :prenume %><br />
+    <%= f.text_field :prenume %>
   </div>
-</div>
-  <div class="control-group">
-    <%= f.label :cnp, :class=>'control-label' %>
-    <div class="controls">
-    <%= f.text_field :cnp ,:class=>'text-field'%>
+  <div class="field">
+    <%= f.label :cnp %><br />
+    <%= f.text_field :cnp %>
   </div>
-</div>
-  <div class="control-group">
-    <%= f.label :adresa, :class=>'control-label' %>
-    <div class="controls">
-      <%= f.text_area :adresa,:class=>'textarea span6', :rows=>3 %>
+  <div class="field">
+    <%= f.label :adresa %><br />
+    <%= f.text_area :adresa %>
   </div>
-</div>
-  <div class="control-group">
-    <%= f.label :debut_diabet, :class=>'control-label' %>
-    <div class="controls">
+  <div class="field">
+    <%= f.label :debut_diabet %><br />
     <%= f.date_select :debut_diabet %>
   </div>
-</div>
-  <div class="control-group">
-    <%= f.label :focad, :class=>'control-label' %>
-    <div class="controls">
-    <%= f.text_field :focad,:class=>'text-field' %>
+  <div class="field">
+    <%= f.label :focad %><br />
+    <%= f.text_field :focad %>
   </div>
-</div>
-  <div class="form-actions">
-    <%= f.submit nil, :class=>'btn btn-primary' %>
-    <%= link_to 'Anuleaza', pacients_path, :class=>'btn' %>
+  <div class="actions">
+    <%= f.submit %>
   </div>
-</fieldset>
 <% end %>

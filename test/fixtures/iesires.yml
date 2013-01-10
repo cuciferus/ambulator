@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  data: 2012-12-17
+  motiv: MyString
+  pacient: 
+
+two:
+  data: 2012-12-17
+  motiv: MyString
+  pacient: 

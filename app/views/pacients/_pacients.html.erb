@@ -1,48 +1,23 @@
-<table class="table table-hover">
-  <thead>
-    <tr>
-      <th>Nume</th>
-      <th>Prenume</th>
-      <th>Cnp</th>
-      <th>Focad</th>
-      <th>Actiuni diverse</th>
-      <th>Evaluari</th>
-      <th>Retete</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% for pacient in @pacients %>
-      <tr id="<%= pacient.cnp %>">
-        <td><%= pacient.nume.downcase.capitalize %></td>
-        <td><%= pacient.prenume.downcase.capitalize %></td>
-        <td><%= pacient.cnp %></td>
-        <td><%= pacient.focad %></td>
-        <td><%= link_to 'Vezi datele pacientului', pacient_path(pacient), :class=>"btn btn-mini", :remote => true %></td>
-      <td><%= link_to 'Adauga Evaluare', new_pacient_evaluare_path(pacient), :remote => true , :class=> "btn btn-mini" %>
-        <%= link_to 'Vezi evaluari vechi', pacient_evaluares_url(pacient), :class=> "btn btn-mini btn-info"%> </td>
-      <td><%= link_to 'prescrie reteta', new_pacient_retetum_path(pacient), :class=> "btn btn-mini" %></td>
-      </tr>
-    </tbody>
-  <% end %>
+<table border=1>
+  <tr>
+    <th>Nume</th>
+    <th>Prenume</th>
+    <th>Cnp</th>
+    <th>Focad</th>
+    <th>Actiuni diverse</th>
+  </tr>
 
+<% for pacient in @pacients %>
+  <tr id=<%= pacient.cnp %>>
+    <td><%= pacient.nume.downcase.capitalize %></td>
+    <td><%= pacient.prenume.downcase.capitalize %></td>
+    <td><%= pacient.cnp %></td>
+    <td><%= pacient.focad %></td>
+    <td><%= link_to 'Vezi detalii', pacient_path(pacient), :remote => true %></td>
+    <td><%= link_to 'Adauga Evaluare', new_pacient_evaluare_path(pacient) %></td>
+    <td><%= link_to 'prescrie reteta', new_pacient_retetum_path(pacient) %></td>
+  </tr>
+<% end %>
 </table>
-
-<%# link_to 'Adauga pacient in evidenta', new_pacient_path, :class=>"btn btn-mini btn-info",
-  :data =>{:toggle => "modal", :target=>"#newPacientModal"}, :remote => true %> 
-  <%= link_to 'Adauga pacient', new_pacient_path, :data =>{:toggle =>"modal", :target =>"#newPacientModal"}, :remote => true , :class =>"btn btn-primary btn-large"%>
-
-<%# link_to 'Adauga pacient in evidenta', new_pacient_path, {:remote =>true, 'data-controls-modal'=>"newPacientModal", 'data-backdrop' => true, 'data-keyboard' => true} %>
-
-  <%# link_to negotiation.name, negotiation_path(negotiation), {:remote => true, 'data-controls-modal' =>  "modal-window", 'data-backdrop' => true, 'data-keyboard' => true} %>
-
-
-  <div id="newPacientModal" class="modal hide fade">
-    <button type="button" class="close" data-dismiss="modal">&times</button>
-    <div class="modal-header">
-      <h3> Adauga pacient nou</h3>
-    </div>
-        <%= render :partial =>'form-modal' %>
-  </div>
-
 
 

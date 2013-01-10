@@ -13,6 +13,10 @@ Ambulator::Application.routes.draw do
 
   get 'drugs/update_dci', :as => 'update_dci'
   resources :drugs do
+    collection do
+      get "find_by_dci/:id", :action => 'find_by_dci'
+    end
+    #match '/drugs/find_by_dci/:id', :controller => 'drugs', :action =>'find_by_dci'
     resources :line_drugs
   end
 
@@ -20,11 +24,10 @@ Ambulator::Application.routes.draw do
     resources :hospitals
   end
   resources :pacients do 
-    resources :exits
-    post 'scoate_evidenta', :action => 'scoate_evidenta'#s-ar putea sa fie inlocuit de exit
+    resources :iesires
     resources :reteta do
       resources :drugs_retetum
-      match 'reteta/update_dci_select/:id', :controller => 'reteta', :action => 'update_dci_select'
+      #match 'reteta/find_by_id/:id', :controller => 'reteta', :action => 'find_by_id'
     end
     resources :evaluares do
       resources :paraclinics 

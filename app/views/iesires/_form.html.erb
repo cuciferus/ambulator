@@ -1,0 +1,29 @@
+<%= form_for(@iesire) do |f| %>
+  <% if @iesire.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@iesire.errors.count, "error") %> prohibited this iesire from being saved:</h2>
+
+      <ul>
+      <% @iesire.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :data %><br />
+    <%= f.date_select :data %>
+  </div>
+  <div class="field">
+    <%= f.label :motiv %><br />
+    <%= f.text_field :motiv %>
+  </div>
+  <div class="field">
+    <%= f.label :pacient %><br />
+    <%= f.text_field :pacient %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

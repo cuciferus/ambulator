@@ -1,3 +1,35 @@
 <p id="notice"><%= notice %></p>
-<%= render 'pacient' %>
+
+<p>
+  <b>Nume:</b>
+  <%= @pacient.nume %>
+</p>
+
+<p>
+  <b>Prenume:</b>
+  <%= @pacient.prenume %>
+</p>
+
+<p>
+  <b>Cnp:</b>
+  <%= @pacient.cnp %>
+</p>
+
+<p>
+  <b>Adresa:</b>
+  <%= @pacient.adresa %>
+</p>
+
+<p>
+  <b>Debut diabet:</b>
+  <%= @pacient.debut_diabet %>
+</p>
+
+<p>
+  <b>Focad:</b>
+  <%= @pacient.focad %>
+</p>
+
+
+<%= link_to 'Edit', edit_pacient_path(@pacient) %> |
 <%= link_to 'Back', pacients_path %>
