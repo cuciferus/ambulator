@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121218152444) do
+ActiveRecord::Schema.define(:version => 20130110202021) do
 
   create_table "brand_names", :force => true do |t|
     t.string   "name"
@@ -64,9 +64,9 @@ ActiveRecord::Schema.define(:version => 20121218152444) do
     t.string   "unitate_masura"
     t.datetime "created_at",                    :null => false
     t.datetime "updated_at",                    :null => false
-    t.boolean  "standard"
     t.float    "valoare_minima"
     t.float    "valoare_maxima"
+    t.string   "set_grup"
   end
 
   create_table "hospitals", :force => true do |t|

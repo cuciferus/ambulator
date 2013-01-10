@@ -22,9 +22,9 @@ namespace :db do
         FelAnaliza.delete_all
         desc 'acum le incarc pe cele din ambulator'
         desc  'categoria de analize'
-        analize = [['acid uric','mg/dL',3.6, 8.3,true] ,['albumina','g/dL',3.4, 5.4,true],['calciu total','mg/dL',9,10.5,true] ,['creatinina','mg/dL',0.5, 1,true],['fosfor','mg/dL',2.4, 4.1,true],['fosfataza alcalina','UI/L',20,140,true],['tgo','UI/L', 8,40,true],['tgp','UI/L', 5, 50,true],['hemoglobina glicozilata','%', 6.5,12,true],['uree','mg/dL', 17,53,true],['trigliceride','mg/dL', 50,200,true],['colesterol','mg/dL',110, 190,true],['leucocite','mii/uL',4.5,11,true],['hemoglobina','g/dL',12,16,true],['hematocrit','%',39,50,true],['trombocite','mii/uL',150,350,true],['bicarbonat','mmol/L',18,23,true],['leucocite pipi','/ul',0,2,true],['hematii pipi','uL',0,5,true],['microalbuminurie','mg/24h',0,300,true],['raport a/c','mg/g',0,200,true]]
+        analize = [['acid uric','mg/dL',3.6, 8.3,'standard'] ,['albumina','g/dL',3.4, 5.4,'standard'],['calciu total','mg/dL',9,10.5,'standard'] ,['creatinina','mg/dL',0.5, 1,'standard'],['fosfor','mg/dL',2.4, 4.1,'standard'],['fosfataza alcalina','UI/L',20,140,'standard'],['tgo','UI/L', 8,40,'standard'],['tgp','UI/L', 5, 50,'standard'],['hemoglobina glicozilata','%', 6.5,12,'standard'],['uree','mg/dL', 17,53,'standard'],['trigliceride','mg/dL', 50,200,'standard'],['colesterol','mg/dL',110, 190,'standard'],['leucocite','mii/uL',4.5,11,'standard'],['hemoglobina','g/dL',12,16,'standard'],['hematocrit','%',39,50,'standard'],['trombocite','mii/uL',150,350,'standard'],['bicarbonat','mmol/L',18,23,'standard'],['leucocite pipi','/ul',0,2,'standard'],['hematii pipi','uL',0,5,'standard'],['microalbuminurie','mg/24h',0,300,'standard'],['raport a/c','mg/g',0,200,'standard']]
         analize.each do |analiza|
-        FelAnaliza.create!(:nume => analiza[0], :unitate_masura => analiza[1], :valoare_minima => analiza[2], :valoare_maxima => analiza[3], :standard => analiza[4])
+        FelAnaliza.create!(:nume => analiza[0], :unitate_masura => analiza[1], :valoare_minima => analiza[2], :valoare_maxima => analiza[3], :set_grup => analiza[4])
         end
       end
       task :analize => :environment do

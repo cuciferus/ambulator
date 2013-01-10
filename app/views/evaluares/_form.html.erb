@@ -65,6 +65,9 @@
   <% end %>
 </table>
 <h3> Adauga analiza care nu e in lista </h3>
+<%= f.fields_for :paraclinics do |paraclinica| %>
+  <%= render 'paraclinic_field', f:paraclinica %>
+<% end %>
 <h3> Ecografie </h3>
   <%# link_to 'Add a paraclinic that is not on the list', new_pacient_evaluare_paraclinic_path(@pacient, @evaluare)%>
   <h3> Diverse calcule: eGFR, Bart</h3><br/>
