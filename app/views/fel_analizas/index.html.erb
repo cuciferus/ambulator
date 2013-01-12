@@ -1,11 +1,12 @@
-<h1>Lista analize</h1>
+<h1>Lista feluri de analize</h1>
+<h3> Eventual sortare dupa set?</h3>
 <table>
   <tr>
     <th>Nume</th>
     <th>Unitate masura</th>
     <th>Valoare maxima </th>
     <th>Valoare minima</th>
-    <th>Standard</th>
+    <th>Tip Set</th>
     <th></th>
     <th></th>
   </tr>
@@ -16,7 +17,7 @@
     <td><%= fel_analiza.unitate_masura %></td>
     <td><%= fel_analiza.valoare_maxima %></td>
     <td><%= fel_analiza.valoare_minima %></td>
-    <td><%= fel_analiza.standard %></td>
+    <td><%= fel_analiza.set_grup %></td>
     <td><%= link_to 'Modifica', edit_fel_analiza_path(fel_analiza) %></td>
     <td><%= link_to 'Sterge de tot', fel_analiza, method: :delete, data: { confirm: 'Are you sure?' } %></td>
     <td><%= link_to 'Adauga la evaluare' %></td>

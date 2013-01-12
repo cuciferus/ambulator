@@ -34,6 +34,14 @@ jQuery ->
         labels: [datele["nume_analiza"].replace("_"," ")]
         postUnits: datele["unitate_de_masura"]
     return false
+  $(":checkbox").click ->
+    $(":checked").each ->
+      console.log($(this).val())
+      id = $(this).val()
+      request = $.get("/fel_analizas/get_analize/"+id+".json")
+      request.success (data) ->
+        console.log(data)
+      request.error (jqXHR, textStatus, errorThrown) -> "alert nu a mers bine textStatus"
 
   $("form").on "click","#inchide",(event) ->
     $("charts").fadeOut(10000).animate

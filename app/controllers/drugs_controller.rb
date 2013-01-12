@@ -85,7 +85,6 @@ class DrugsController < ApplicationController
   end
 
   def find_by_dci
-    #drug = Drug.find(params[:id])
     @nume = Drug.where(:dci => params[:id])
     respond_to do |format|
       format.html

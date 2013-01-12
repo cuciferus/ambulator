@@ -32,12 +32,17 @@
     <%= f.label :diagnostice, "Diagnosticele evaluarii actuale" %> <br/>
     <%= f.text_area :diagnostice, :rows => 4 %>
   </div>
-  <h2> Analize standard sau cele de data trecuta </h2>
+  <h2> Alege set analize</h2>
+  <%= label :set_analize, "set analize" %>
+  <% for analiza in FelAnaliza.uniq.pluck(:set_grup) %>
+    <%= check_box_tag analiza, analiza, :class => 'set_analiza' %>
+    <%= analiza %>
+  <% end %>
 
 
   <hr>
 
-  <h2> Analize standard </h2>
+  <h2> Analize </h2>
   
   <table>
     <tr><th>Tip analiza</th>
@@ -47,7 +52,7 @@
       <th> Fizilogic maxim</th>
       <th> Grafic</th>
       <th> Scor </th></tr>
-    
+    <% if false %>
   <% @evaluare.paraclinics.each_with_index do |paraclinic, index| %>
     <%= f.fields_for :paraclinics, paraclinic do |g| %>
       <tr><td><%= @analize_standard[index].nume %></td>
@@ -63,6 +68,7 @@
     </tr>
     <% end %>
   <% end %>
+<% end %>
 </table>
 <h3> Adauga analiza care nu e in lista </h3>
 <%= f.fields_for :paraclinics do |paraclinica| %>

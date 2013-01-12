@@ -26,13 +26,13 @@ class EvaluaresController < ApplicationController
   def new
     @pacient = Pacient.includes(:evaluares => [:paraclinics]).find(params[:pacient_id])
     @evaluare = Evaluare.new
-    @analize_standard = FelAnaliza.where(:standard => true)
-    @ultimele_analize = @pacient.evaluares.last.paraclinics
+    #@analize_standard = FelAnaliza.where(:standard => true)
+    #@ultimele_analize = @pacient.evaluares.last.paraclinics
     
-    @analize_standard.each do |analiza|
-      @evaluare.paraclinics.build({:fel_analiza_id => analiza.id})
+    #@analize_standard.each do |analiza|
+      #@evaluare.paraclinics.build({:fel_analiza_id => analiza.id})
 
-    end
+    #end
     respond_to do |format|
       format.js
       format.html # new.html.erb
