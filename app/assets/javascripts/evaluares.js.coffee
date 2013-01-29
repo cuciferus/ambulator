@@ -34,10 +34,21 @@ jQuery ->
         labels: [datele["nume_analiza"].replace("_"," ")]
         postUnits: datele["unitate_de_masura"]
     return false
+
+  $("#numar_registru").hide()
+  $("#evaluare_generator_magic").mousedown ->
+    if $(this).is(":checked")
+      $("#numar_registru").show()
+    else
+      $("#numar_registru").hide()
+
+
+
   $(":checkbox").click ->
     $(":checked").each ->
       console.log($(this).val())
       id = $(this).val()
+      evaluare = window.location.pathname.split("/")[2]
       request = $.get("/fel_analizas/get_analize/"+id+".json")
       request.success (data) ->
         console.log(data)

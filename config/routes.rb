@@ -35,7 +35,7 @@ Ambulator::Application.routes.draw do
   end
   resources :fel_analizas do
     collection do
-      get 'get_analize/:id', :action => 'get_analize'
+      get 'get_analize/:set', :action => 'get_analize'
     end
     resources :paraclinics
   end

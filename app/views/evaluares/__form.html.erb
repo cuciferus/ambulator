@@ -1,0 +1,100 @@
+<%= form_for([@pacient, @evaluare]) do |f| %>
+  <fieldset>
+  <% if @evaluare.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@evaluare.errors.count, "error") %> prohibited this evaluare from being saved:</h2>
+
+      <ul>
+      <% @evaluare.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :data,"Data evaluarii"  %>
+    <%= f.text_field :data, :value => Time.now.strftime("%Y/%m/%d") %>
+  </div>
+  <div class="field">
+    <%= f.label :nr_fo, "Numar de registru" %>
+    <%= f.text_field :nr_fo %>
+  </div>
+  <div class="field">
+    <% if @pacient.evaluares.last.diagnostice == "" %>
+      <h2> La ultima evaluare pacientul nu are trecute diagnosicele<h2> || <h3> <a href="#"> Vezi diagnostice anterioare</a>
+          <% else %>
+      <h2> Diagnostice cunoscute la data de <%= @pacient.evaluares.last.data %>: </h2>
+      <%= f.label @pacient.evaluares.last.diagnostice, :id=>"diagnostice_vechi" %>  | <a href="#" id="preluare_diagnostice" > Preia Diagnostice</a>
+    <% end %>
+  </div>
+  <div class="field">
+    <%= f.label :diagnostice, "Diagnosticele evaluarii actuale" %> <br/>
+    <%= f.text_area :diagnostice, :rows => 4 %>
+  </div>
+  <h2> Alege set analize</h2>
+  <%= label :set_analize, "set analize" %>
+  <% for analiza in FelAnaliza.uniq.pluck(:set_grup) %>
+    <%= check_box_tag analiza, analiza, :class => 'set_analiza' %>
+    <%= analiza %>
+  <% end %>
+
+
+  <hr>
+
+  <h2> Analize </h2>
+  
+  <table>
+    <tr><th>Tip analiza</th>
+      <th> Valoare anterioara</th>
+      <th> Valoare </th>
+      <th> Unitate de masura </th>
+      <th> Fizilogic maxim</th>
+      <th> Grafic</th>
+      <th> Scor </th></tr>
+    <% if false %>
+  <% @evaluare.paraclinics.each_with_index do |paraclinic, index| %>
+    <%= f.fields_for :paraclinics, paraclinic do |g| %>
+      <tr><td><%= @analize_standard[index].nume %></td>
+        <td><% unless not defined? @ultimele_analize[index] & @ultimele_analize[index].fel_analiza_id != @analize_standard[index] %>
+            <%= @ultimele_analize[index].valoare %>
+          <% end %></td>
+      <td><%= g.text_field :valoare %></td>
+      <td><%= @analize_standard[index].unitate_masura %></td>
+      <td><%= @analize_standard[index].valoare_maxima %></td>
+      <td><a href="#" class="adauga_grafic", data-message=<%= @pacient.get_data_and_analiza(@analize_standard[index].id).to_json %> > Grafic analiza </a></td> 
+      <!-- <td id= <%= @analize_standard[index].nume %>> <%= link_to 'Grafic_analiza', fel_analiza_paraclinics_path(@analize_standard[index],:pacient_id =>@pacient), :remote =>true  %></td> -->
+      <td><a href="#" class="grafic_scor", data-message="salut" > Grafic scor </a></td>
+    </tr>
+    <% end %>
+  <% end %>
+<% end %>
+</table>
+<h3> Adauga analiza care nu e in lista </h3>
+<%= f.fields_for :paraclinics do |paraclinica| %>
+  <%= render 'paraclinic_field', f:paraclinica %>
+<% end %>
+<h3> Ecografie </h3>
+  <%# link_to 'Add a paraclinic that is not on the list', new_pacient_evaluare_paraclinic_path(@pacient, @evaluare)%>
+  <h3> Diverse calcule: eGFR, Bart</h3><br/>
+  <h2> Consult clinic</h2><hr>
+  <% unless @pacient.evaluares.last.recomandari.nil? %>
+    <h2> Recomandarile facute in <%= @pacient.evaluares.last.data %></h2>
+    <%= f.label @pacient.evaluares.last.recomandari, :id => "recomandari_vechi" %>
+  <% end %>
+  <br />
+  <div class="field">
+    <%= f.label :recomandari %>  
+    <a href="#" id="preia_recomandari"> Preia Recomandari </a> <br />
+    <%= f.text_area :recomandari , :rows => 4 %>
+  </div>
+  <hr>
+  <div class="actions">
+    <%= f.submit 'adauga' %>
+    <%= f.submit 'adauga si printeaza' %>
+    <%= f.submit 'adauga, printeaza analize si reteta' %>
+    <h2> Buton temporar </h2>
+    <%= f.submit 'printeaza reteta' %>
+  </div>
+</fieldset>
+<% end %>

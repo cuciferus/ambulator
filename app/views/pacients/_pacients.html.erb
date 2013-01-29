@@ -5,6 +5,9 @@
     <th>Cnp</th>
     <th>Focad</th>
     <th>Actiuni diverse</th>
+    <th></th>
+    <th></th>
+    <th></th>
   </tr>
 
 <% for pacient in @pacients %>
@@ -15,6 +18,7 @@
     <td><%= pacient.focad %></td>
     <td><%= link_to 'Vezi detalii', pacient_path(pacient), :remote => true %></td>
     <td><%= link_to 'Adauga Evaluare', new_pacient_evaluare_path(pacient) %></td>
+    <td><%= link_to 'Ia numar registru', new_pacient_evaluare_path(pacient) %></td>
     <td><%= link_to 'prescrie reteta', new_pacient_retetum_path(pacient) %></td>
   </tr>
 <% end %>
