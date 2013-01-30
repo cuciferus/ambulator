@@ -13,6 +13,11 @@ class EvaluaresController < ApplicationController
   # GET /evaluares/1
   # GET /evaluares/1.json
   def show
+    if params[:incomplet].present?
+      puts 'e incomplet'
+    else
+      puts 'e complet'
+    end
     @pacient = Pacient.find(params[:pacient_id])
     @evaluare = @pacient.evaluares.find(params[:id])
     respond_to do |format|
@@ -42,12 +47,18 @@ class EvaluaresController < ApplicationController
   # POST /evaluares.json
   def create
     @pacient = Pacient.find(params[:pacient_id])
+    if params[:evaluare][:generator_magic] == '1'
+      puts 'mda e magic'
+    else
+      puts 'nu e magie'
+    end
+    params[:evaluare].delete :generator_magic 
     @evaluare = @pacient.evaluares.create(params[:evaluare])
 
     respond_to do |format|
       if @evaluare.save
         format.js
-        format.html { redirect_to @evaluare, notice: 'Evaluare was successfully created.' }
+        format.html { redirect_to url_for([@pacient, @evaluare]), notice: 'Evaluare was successfully created.' }
         format.json { render json: @evaluare, status: :created, location: @evaluare }
       else
         format.js
