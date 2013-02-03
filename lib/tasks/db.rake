@@ -30,14 +30,18 @@ namespace :db do
       task :analize => :environment do
         desc "acum sterg analizele"
         Paraclinic.delete_all
+        Evaluare.delete_all
         desc "acum adaug paraclinicele vechi"
         require "csv"
+        #$an = 1983
+        #$ultimu_fo = 0 #csv nu e ordonat dupa ani
+        $an_max_fo={}
+
         def adauga_analiza(evaluare, valoare, index)
           analize = {0=>"acid uric", 1=>"albumina", 2=>"calciu total", 3=>"creatinina", 4=>"fosfor", 5=> "fosfataza alcalina", 6=> "tgop", 7=>"hemoglobina glicozilata", 8=> "uree", 9=>"trigliceride", 10=>"colesterol", 11=>"leucocite", 12=>"hemoglobina", 13 =>"hematocrit", 14=>"trombocite", 15=>"bicarbonat", 16=> "leucocite pipi", 17=>"hematii pipi", 18=>"microalbuminurie", 19=>"raport a/c"}
           if index == 6 
           tgo, tgp = valoare.split('/')
           fel_analiza = FelAnaliza.where(:nume => 'tgo').first
-          puts 'am adaugat tgo'
           evaluare.paraclinics.create!(:valoare => tgo, :fel_analiza_id => fel_analiza.id)
           fel_analiza = FelAnaliza.where(:nume => 'tgp').first
           evaluare.paraclinics.create!(:valoare =>tgp, :fel_analiza_id => fel_analiza.id)
@@ -46,9 +50,26 @@ namespace :db do
             evaluare.paraclinics.create!(:valoare => valoare, :fel_analiza_id => fel_analiza.id)
           end
         end
+
+        def calculeaza_fo(data) 
+          anul_evaluarii = data.to_date.year
+          #puts 'global and local comparison is', $an==anul_evaluarii
+          puts anul_evaluarii
+          if $an_max_fo.has_key?(anul_evaluarii.to_s) 
+            max_fo = $an_max_fo[anul_evaluarii.to_s]
+            $an_max_fo[anul_evaluarii.to_s]+=1
+          else
+            $an_max_fo[anul_evaluarii.to_s]=0
+          end
+          return $an_max_fo[anul_evaluarii.to_s]
+        end
+
+
         CSV.foreach("#{Rails.root}/db/analize.csv") do |row|
           pacient = Pacient.where(:cnp => row[-2]).first
-          evaluare = pacient.evaluares.create!(:data => row[-1], :diagnostice => row[-4], :recomandari => row[-3])
+          data = row[-1]
+          puts calculeaza_fo(data)
+          evaluare = pacient.evaluares.create!(:data => data, :diagnostice => row[-4], :recomandari => row[-3], :nr_fo => calculeaza_fo(data))
           for coloana in (0..19).to_a
             adauga_analiza(evaluare, row[coloana], coloana) unless row[coloana].nil?
           end

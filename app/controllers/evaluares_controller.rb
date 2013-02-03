@@ -13,7 +13,7 @@ class EvaluaresController < ApplicationController
   # GET /evaluares/1
   # GET /evaluares/1.json
   def show
-    if params[:incomplet].present?
+    if params[:incomplet].present? #e doar o idee
       puts 'e incomplet'
     else
       puts 'e complet'
@@ -49,6 +49,7 @@ class EvaluaresController < ApplicationController
     @pacient = Pacient.find(params[:pacient_id])
     if params[:evaluare][:generator_magic] == '1'
       puts 'mda e magic'
+      celMaiMareNumarDeAnuAsta = Evaluare.where(['data > ?',Data.today.at_beginning_of_year]).select(:nr_fo).map(&:nr_fo).max #si daca fo e non numar #si daca fo e non numar?
     else
       puts 'nu e magie'
     end
