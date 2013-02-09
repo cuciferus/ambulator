@@ -17,9 +17,22 @@
 <%= link_to 'Printeaza retete aranesp de azi' %><br/>
 <%= link_to 'Printeaza/Vezi registru consultatii'%><hr>
 <h3> Pacienti </h3>
-<%= link_to 'Adauga pacient in evidenta', new_pacient_path %><br/><hr>
+<%# link_to 'Adauga pacient in evidenta', new_pacient_path %>
+<button type="button" data-toggle="modal" data-target="#newPacientModal">Adauga Pacient</button>
+<%= button_to 'Adauga Pacient', new_pacient_path, :data=>{:toggle=> "modal", :target=>"#newPacientMdoal"}, :remote=>true %>
+<br/><hr>
 <h3> Registru </h3>
 <%= link_to 'Vezi evaluarile de ieri' %><br />
 <%= link_to 'Vezi evaluarile de azi' %><br />
 <%= link_to 'Vezi evaluarile de saptamana asta' %>
 <%= link_to 'Vezi evaluari neterminate' %>
+
+<div id="newPacientModal" class="modal hide fade" tabindex="-1" role="dialog" arialabelledby="pacientLabel" aria-hidden="true">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times</button>
+    <h3 id="pacientLabel">Adauga Pacient</h3>
+  </div>
+  <%= render :partial =>'pacients/new-pacient-modal',:pacient=>@pacient =Pacient.new %>
+
+</div>
+

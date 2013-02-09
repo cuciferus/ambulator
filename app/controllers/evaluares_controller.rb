@@ -31,7 +31,7 @@ class EvaluaresController < ApplicationController
     @pacient = Pacient.includes(:evaluares => [:paraclinics]).find(params[:pacient_id])
     @evaluare = Evaluare.new
     respond_to do |format|
-      format.js
+      format.js 
       format.html # new.html.erb
       format.json { render json: @evaluare }
     end

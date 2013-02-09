@@ -2,6 +2,25 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 jQuery ->
+  $modal = $('#modal')
+  $modal_close = $modal.find('.close')
+  $modal_container = $('#modal-container')
+
+  #pt toate linkurile cu data-remote!
+  $(document).on 'ajax:success', 'a[data-remote]',(xhr, data, status) ->
+    $modal
+      .html(data.html)
+      .prepend(modal, close)
+      .css('top',$(window).scrollTop()+40)
+      .show()
+    $modal_container.show()
+
+  $(document).on 'click', '#modal .close', ->
+    $modal_container.hide()
+    $modal.hide()
+    false
+
+
   $("#evaluare_data").datepicker()
   $("#preluare_diagnostice").click ->
     diagnostice_vechi= $("#diagnostice_vechi").text()

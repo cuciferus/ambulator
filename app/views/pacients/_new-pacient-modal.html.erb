@@ -1,0 +1,56 @@
+
+<div class="modal-body">
+<%= form_for :pacient , :html=>{:class=>'form_horizontal'} do |f| %>
+  <fieldset>
+
+    <div class="control-group">
+      <%= f.label :nume, :class =>'control-label' %>
+      <div class="controls">
+        <%= f.text_field :nume %>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <%= f.label :prenume, :class=>'control-label' %>
+      <div class="controls">
+        <%= f.text_field :prenume %>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <%= f.label :cnp, :class=>'control-label' %>
+      <div class="controls">
+        <%= f.text_field :cnp %>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <%= f.label :adresa, :class=> 'control-label'%>
+      <div class="controls row-fluid">
+        <%= f.text_area :adresa, :rows=>"2" %>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <%= f.label :debut_diabet, :class=>'control-label'%>
+      <div class="controls">
+        <%= f.text_field :debut_diabet, :value=>Time.now.strftime("%Y/%m/%d") %>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <%= f.label :focad %>
+      <div class="controls">
+        <%= f.text_field :focad %>
+      </div>
+    </div>
+
+
+  </fieldset>
+</div>
+    <div class="form-actions">
+      <%= f.submit "Adauga Pacient", :class=>"btn btn-primary"%>
+      <button class="btn" data-dismiss="modal" aria-hiddent="true">Close</button>
+    </div>
+
+<% end %>
