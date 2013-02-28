@@ -4,5 +4,5 @@
   <td><%= @pacient.cnp %></td>
   <td><%= @pacient.focad %></td>
   <td>Adresa:<%= @pacient.adresa %></td>
-  <td><em><%= link_to "Scoate pacientul din evidenta", new_pacient_iesire_path(@pacient),:remote => true %>, <%= link_to 'Editeaza Datele pacientului', edit_pacient_path(@pacient) %><%= link_to 'Vezi evaluari vechi', pacient_evaluares_url(@pacient) %> </em></td>
+  <td><em><%= link_to "Scoate pacientul din evidenta", new_pacient_iesire_path(@pacient), :data=>{:toggle=> "modal", :target=>"#IesireModal"},:remote => true %>, <%= link_to 'Editeaza Datele pacientului', edit_pacient_path(@pacient) %><%= link_to 'Vezi evaluari vechi', pacient_evaluares_url(@pacient) %> </em></td>
 </tr>
