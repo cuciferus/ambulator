@@ -29,6 +29,7 @@ class PacientsController < ApplicationController
     @pacient = Pacient.new
 
     respond_to do |format|
+      format.js
       format.html # new.html.erb
       format.json { render json: @pacient }
     end

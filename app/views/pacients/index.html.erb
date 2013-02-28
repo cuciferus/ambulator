@@ -1,4 +1,4 @@
-<%= javascript_include_tag 'pacients.js.coffee' %>
+<%# javascript_include_tag 'pacients.js.coffee' %>
 <h1 align=center>Lista pacientilor</h1>
 <hr>
 <h3> Cauta pacient </h3>
@@ -17,9 +17,8 @@
 <%= link_to 'Printeaza retete aranesp de azi' %><br/>
 <%= link_to 'Printeaza/Vezi registru consultatii'%><hr>
 <h3> Pacienti </h3>
-<%# link_to 'Adauga pacient in evidenta', new_pacient_path %>
-<button type="button" data-toggle="modal" data-target="#newPacientModal">Adauga Pacient</button>
-<%= button_to 'Adauga Pacient', new_pacient_path, :data=>{:toggle=> "modal", :target=>"#newPacientMdoal"}, :remote=>true %>
+<%=link_to "Adauga Pacient",new_pacient_path, :data=>{:toggle=> "modal", :target=>"#newPacientModal"},:remote => true %><br/>
+<%# button_to 'Adauga Pacient', new_pacient_path, :data=>{:toggle=> "modal", :target=>"#newPacientModal"}, :remote=>true %>
 <br/><hr>
 <h3> Registru </h3>
 <%= link_to 'Vezi evaluarile de ieri' %><br />
@@ -32,7 +31,10 @@
     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times</button>
     <h3 id="pacientLabel">Adauga Pacient</h3>
   </div>
-  <%= render :partial =>'pacients/new-pacient-modal',:pacient=>@pacient =Pacient.new %>
-
+  <div id="modal-body" class="modal-body">
+    <h2>salut</h2>
+  </div>
+  <div class="modal-footer">
+  </div>
 </div>
 

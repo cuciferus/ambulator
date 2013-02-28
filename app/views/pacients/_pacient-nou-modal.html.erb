@@ -1,7 +1,6 @@
-
 <div class="modal-body">
-<%= form_for :pacient , :html=>{:class=>'form_horizontal'} do |f| %>
-  <fieldset>
+  <%= form_for :pacient , :html=>{:class=>'form_horizontal'} do |f| %>
+    <fieldset>
 
     <div class="control-group">
       <%= f.label :nume, :class =>'control-label' %>
@@ -47,10 +46,12 @@
 
 
   </fieldset>
-</div>
+  </div>
     <div class="form-actions">
       <%= f.submit "Adauga Pacient", :class=>"btn btn-primary"%>
       <button class="btn" data-dismiss="modal" aria-hiddent="true">Close</button>
     </div>
 
 <% end %>
+
+
