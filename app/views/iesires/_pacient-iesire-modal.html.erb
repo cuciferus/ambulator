@@ -1,0 +1,19 @@
+<div class="modal-body">
+  <fieldset>
+  <%= form_for [@pacient, @iesire] , :remote => true do |f| %>
+    <div class="control-group">
+      <%= f.label :data, :class=>'control-label' %>
+      <div class="controls">
+        <%= f.text_field :data, :value => Time.now.strftime("%Y/%m/%d") %>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <%= f.label :motiv, :class => 'control-label' %>
+      <div class="controls">
+        <%= f.text_field :motiv %>
+      </div>
+    </div>
+  </fieldset>
+<% end %>
+</div>

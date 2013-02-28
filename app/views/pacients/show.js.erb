@@ -1,2 +1,1 @@
-$('#<%= @pacient.cnp%>').replaceWith('<tr><td><%= @pacient.nume%></td><td><%= @pacient.prenume%></td><td><%= @pacient.cnp %></td><td><%= @pacient.focad %></td><td>Adresa:<%= @pacient.adresa %></td><td><em><%= link_to "Scoate pacientul din evidenta", new_pacient_iesire_path(@pacient) %>, <%= link_to 'Editeaza Datele pacientului', edit_pacient_path(@pacient) %><%= link_to 'Vezi evaluari vechi', pacient_evaluares_url(@pacient) %> </em></td></tr>');
-console.log('salut');
+$('#<%= @pacient.cnp%>').replaceWith("<%= escape_javascript( render :partial =>'detalii-rand-pacient') %>");

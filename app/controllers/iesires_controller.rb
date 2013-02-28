@@ -1,4 +1,5 @@
 class IesiresController < ApplicationController
+  respond_to :html, :js
   # GET /iesires
   # GET /iesires.json
   def index
@@ -30,6 +31,7 @@ class IesiresController < ApplicationController
     @iesire = Iesire.new
 
     respond_to do |format|
+      format.js
       format.html # new.html.erb
       format.json { render json: @iesire }
     end
@@ -51,9 +53,11 @@ class IesiresController < ApplicationController
         @pacient.update_attribute(:active, false)
         format.html { redirect_to @iesire, notice: 'Iesire was successfully created.' }
         format.json { render json: @iesire, status: :created, location: @iesire }
+        format.js
       else
         format.html { render action: "new" }
         format.json { render json: @iesire.errors, status: :unprocessable_entity }
+        format.js
       end
     end
   end

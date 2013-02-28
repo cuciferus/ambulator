@@ -1,4 +1,4 @@
-<%= form_for(@iesire) do |f| %>
+<%= form_for([@pacient,@iesire]) do |f| %>
   <% if @iesire.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@iesire.errors.count, "error") %> prohibited this iesire from being saved:</h2>

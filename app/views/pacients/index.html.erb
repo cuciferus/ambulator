@@ -12,10 +12,7 @@
 <div id="pacients"> <%= render 'pacients' %></div>
 <br />
 <hr>
-<h3> Retete </h3>
-<%= link_to 'Printeaza retete keto de azi' %><br />
-<%= link_to 'Printeaza retete aranesp de azi' %><br/>
-<%= link_to 'Printeaza/Vezi registru consultatii'%><hr>
+
 <h3> Pacienti </h3>
 <%=link_to "Adauga Pacient",new_pacient_path, :data=>{:toggle=> "modal", :target=>"#newPacientModal"},:remote => true %><br/>
 <%# button_to 'Adauga Pacient', new_pacient_path, :data=>{:toggle=> "modal", :target=>"#newPacientModal"}, :remote=>true %>
@@ -38,3 +35,14 @@
   </div>
 </div>
 
+<div id="IesireModal" class="modal hide fade" tabindex="-1" role="dialog" arialebelledby="iesireLabel" aria-hidden="true">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times</button>
+    <h3 id="iesireLabel"> Scoate Pacientul</h3>
+  </div>
+  <div id="modal-body" class="modal-body">
+    <h2>salut din iesire</h2>
+  </div>
+  <div class="modal-footer">
+  </div>
+</div>
